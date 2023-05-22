@@ -45,11 +45,14 @@
 </script>
 <style scoped>
 .highlighted{
-  color: #fff !important;
-  background: #0475861c !important;;
+  color: green !important;
+  background: #0a3764 !important;;
 }
 .highlighted .v-list-item__icon .v-icon{
-  color: #fff !important;
+  color: green !important;
+}
+.highlighted .v-list-item .v-list-item__title,.highlighted .v-list-item .v-list-item__subtitle {
+  color: green !important;
 }
 .text-menu{
   font-size: 13px !important;

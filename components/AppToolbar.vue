@@ -2,7 +2,7 @@
   <v-app-bar
     app
     elevation="0"
-    color="#fff"
+    color="#0a3764"
   >   
       <nuxt-link class="customTopNav flex text-sm-left" to="/">
         <img src="@/static/logo.png" width="250" alt="GEC CITOYEN">

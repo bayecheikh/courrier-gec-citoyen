@@ -3,14 +3,32 @@
   "homePage":"/parametres",
   "menuItems":[
     {
-      "icon": "mdi-account-group-outline",
-      "href": "/utilisateurs",
-      "title": "Utilisateurs",
-      "name": "gerer-utilisateurs"
+      "icon": "mdi-view-dashboard-outline",
+      "href": "/dashboard",
+      "title": "Tableau de bord",
+      "name": "gerer-parametres"
+    },
+    {
+      "icon": "mdi-inbox-arrow-down",
+      "href": "/courrierrecus",
+      "title": "Boite de réception",
+      "name": "gerer-parametres"
+    },
+    {
+      "icon": "mdi-inbox-arrow-up",
+      "href": "/courrierenvoyes",
+      "title": "Courriers envoyés",
+      "name": "gerer-parametres"
+    },
+    {
+      "icon": "mdi-email-outline",
+      "href": "/courrierentraitements",
+      "title": "En cours de traitement",
+      "name": "gerer-parametres"
     },
     {
       "icon": "mdi-cog-outline",
-      "href": "/parametres",
+      "href": "/profil/me",
       "title": "Paramétrage",
       "name": "gerer-parametres"
     }
