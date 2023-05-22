@@ -101,8 +101,8 @@ import PageHeader from '@/components/PageHeader';
     data () {
       return {
         leftmenuItems: [
-          { text: 'Informations personnelles', icon: 'mdi-account-edit',link:'/parametres/infopersonnelles',position:0 },
-          { text: 'Securité', icon: 'mdi-account-lock',link:'/parametres/securite',position:1  }
+          { text: 'Informations personnelles', icon: 'mdi-account-edit',link:'/profil/me/infopersonnelles',position:0 },
+          { text: 'Securité', icon: 'mdi-account-lock',link:'/profil/me/securite',position:1  }
         ],
         headerItems: [
         {
@@ -114,13 +114,13 @@ import PageHeader from '@/components/PageHeader';
         {
           text: 'Paramétres',
           disabled: false,
-          to: '/parametres',
+          to: '/profil/me',
           exact: true
         },
         {
           text: 'Informations personnelles',
           disabled: true,
-          to: '/parametres/infopersonnelles',
+          to: '/profil/me/infopersonnelles',
           exact: true
         },
         ]

@@ -9,7 +9,7 @@
     middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
       console.log('token: ++++++++++ ',$getToken())
       if ($getToken()!=null & $getUser()!=null & $isLogged()!=null & $isLogged()!=false) {
-        return redirect('/parametres')
+        return redirect('/profil/me')
       }
     },
     components: {

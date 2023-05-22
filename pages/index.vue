@@ -11,7 +11,7 @@
           this.$router.push('/login')
           }
           else
-          this.$router.push('/parametres')
+          this.$router.push('/profil/me')
         }
     }
 </script>

@@ -177,7 +177,7 @@
         }
       },
       goToProfile(){ 
-        this.$router.push('/profil/'+this.loggedInUser.id);   
+        this.$router.push('/profil/me');   
       },
     }
   }

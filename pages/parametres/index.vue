@@ -35,7 +35,7 @@
           {
             text: 'Paramétrage',
             disabled: false,
-            to: '/parametres',
+            to: '/profil/me',
             exact: true
           }
         ]    
