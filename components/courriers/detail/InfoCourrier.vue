@@ -1,11 +1,39 @@
 <template>
-  <v-card class="custom-card-user border-grey">                   
-    <v-card-text>
-      <v-row>
-        <v-col md="9" sm="12" lg="9" text-md-left>
+  <v-card flat class="pl-5 pr-5 pt-5 pb-5">                   
+    <v-card-text>    
+      <!-- <v-row class="border-grey mb-5">
+        <v-col md="12" sm="12" lg="12" text-md-left>
           {{this.detailCourrier}}
         </v-col>
-      </v-row>
+      </v-row>  -->
+      <v-row class="border-grey mb-5">
+        <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
+          <div class="col-md-6 col-sm-12 col-lg-6 ">
+            <div class="d-flex text-label mb-5">Objet : <div class="text-green text-value">{{this.detailCourrier.subject}}</div> </div>
+            <div class="d-flex text-label mb-5">Organisme : <div class="text-green text-value">{{this.detailCourrier.structure}}</div> </div>
+            <div class="d-flex text-label mb-5">Code de suivi : <div class="text-green text-value">{{this.detailCourrier.idSuivi}}</div> </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-lg-6 ">
+            <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{this.detailCourrier.createdAt}}</div> </div>
+            <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{this.detailCourrier.documentDate}}</div> </div>
+            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value">{{this.detailCourrier.status}}</div> </div>
+          </div>
+        </v-col>
+      </v-row>  
+      <v-row class="border-grey mb-5">
+        <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+            <div class="d-flex text-label mb-5"><h2>Courrier</h2></div>
+          </div>
+        </v-col>
+      </v-row> 
+      <v-row class="border-grey mb-5">
+        <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+            <div class="d-flex text-label mb-5"><h2>Pièces-jointes</h2></div>
+          </div>
+        </v-col>
+      </v-row>               
     </v-card-text>
   </v-card>
 </template>
@@ -17,7 +45,7 @@ import { mapMutations, mapGetters } from 'vuex'
       //this.getDetail(this.id)
     },
     computed: mapGetters({
-      detailCourrier: 'courriers/detailCourrier'
+      detailCourrier: 'courriers/detailcourrier'
     }),
     data () {
       return {
@@ -31,7 +59,7 @@ import { mapMutations, mapGetters } from 'vuex'
       retour(){       
           this.$router.push('/courriers');
       },
-      getDetail(id){
+      /* getDetail(id){
           this.progress=true
           this.$gecApi.$get('/users/'+id)
         .then(async (response) => {
@@ -44,7 +72,7 @@ import { mapMutations, mapGetters } from 'vuex'
             console.log('Requête envoyée ')
         });
         //console.log('total items++++++++++',this.paginationstructure)
-      },
+      }, */
     },
   }
 </script>

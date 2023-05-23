@@ -47,7 +47,7 @@ import { mapMutations, mapGetters } from 'vuex'
     methods: {
 
       retour(){       
-        this.$router.push('/courriers');
+        this.$router.push('/courrierenvoyes');
       },
       reinitialiser(){  
         this.dialog = true    
