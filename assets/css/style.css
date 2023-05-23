@@ -5,11 +5,17 @@ html {
 .container {
     width: 100% !important;
     padding: 12px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
     max-width:100% !important;
+    background-color: #e3ebf3 !important;
 }
-
+.theme--light.v-input {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fff;
+}
 .customTopNav {
     text-decoration: none !important;
     color: #000 !important;

@@ -6,7 +6,7 @@
     <div class="custom-container mt-0">
       <stat-box></stat-box>
     </div>
-    <div class="custom-container bg-white mt-5 mr-8 ml-8 pl-4 pr-1 pt-5 pb-5 mb-5">
+    <div class=" mt-0 mr-8 ml-8 pl-0 pr-0 pt-0 pb-5 mb-5">
       <table-courrier></table-courrier>
     </div>
   </div>

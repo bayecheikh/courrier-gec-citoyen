@@ -1,35 +1,42 @@
 <template>
 <div>
-  <v-card-title class="d-flex">
-    <!--<v-autocomplete
-        v-model="search"
-        :items="listcategories"
-        :rules="rules.categoriesRules"
-        outlined
-        dense
-        small-chips
-        label="Catégorie"
-        item-text="libelle"
-        item-value="libelle"
-        clearable
-      >
-    </v-autocomplete>-->
-    <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Rechercher"
-        outlined
-        rounded
-        dense
-        hide-details
-      ></v-text-field>
+  <v-card-title class="d-flex pl-0 pr-0">
+    <v-row>
+        <v-col md="4" lg="4" sm="12">
+          <h3>Boite de réception</h3>
+        </v-col>
+        <v-col md="4" lg="4" sm="12">
+          <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Rechercher"
+          outlined
+          rounded
+          dense
+          hide-details
+          ></v-text-field>
+        </v-col>
+        <v-col md="4" lg="4" sm="12" class="d-flex justify-end">
+          <v-btn
+          depressed
+          rounded
+          color="primary"
+          @click="goToAddcourrier"
+          >
+            <v-icon left>
+              mdi-plus
+            </v-icon>
+            Ajouter un courrier
+          </v-btn>
+        </v-col>
+      </v-row>
 </v-card-title>
 <v-data-table
   :headers="headers"
   :items="listcourriers.filter(item => item.status=='END')"
   item-key="id"
   items-per-page="20"
-  class="flat pt-4"
+  class="flat mt-5"
   :loading="listcourriers.length?false:true" 
   loading-text="Chargement... Patientez svp"
   :rows-per-page-items="[10,20,30,40,50]"
