@@ -50,7 +50,7 @@
 import { mapMutations, mapGetters } from 'vuex'
   export default {
     mounted: function() {
-      this.getDetail(this.id)
+      //this.getDetail(this.id)
     },
     computed: mapGetters({
       detailUtilisateur: 'utilisateurs/detailutilisateur'

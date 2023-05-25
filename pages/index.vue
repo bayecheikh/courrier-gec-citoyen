@@ -6,12 +6,19 @@
     export default {
         mounted()
         {
-          let isAuthenticate = this.$isLogged()
+          /* let isAuthenticate = this.$isLogged()
           if(!isAuthenticate){
-          this.$router.push('/login')
+          this.$router.push('https://siteweb-gec-citoyen.vercel.app/')
           }
           else
-          this.$router.push('/profil/me')
+          this.$router.push('/dashboard') */
+          this.$router.push('/dashboard')
+        },
+          methods:{
+            getToken(){
+                console.log("aaaa", localStorage.getItem('gecToken'))
+            
+            }
         }
     }
 </script>

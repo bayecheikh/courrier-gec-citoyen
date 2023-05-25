@@ -44,14 +44,32 @@
   :search="search"
 >
  <template v-slot:[`item.actions`]="{ item }">
-        <v-menu bottom left>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" icon v-bind="attrs" v-on="on" @click="visualiserItem(item)">
-              <v-icon>mdi-eye-outline</v-icon>
-            </v-btn>
-          </template>
-        </v-menu>
-      </template>
+  <v-menu bottom left>
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn color="primary" icon v-bind="attrs" v-on="on" @click="visualiserItem(item)">
+        <v-icon>mdi-eye-outline</v-icon>
+      </v-btn>
+    </template>
+  </v-menu>
+ </template>
+ <template v-slot:[`item.traitement_status_slug`]="{ item }">
+      <v-chip
+        :color="$getColore(item.traitement_status_slug)"
+        outlined
+      >
+        {{ $getStatus(item.traitement_status_slug) }}
+      </v-chip>
+  </template>
+      <template v-slot:[`item.documentDate`]="{ item }">
+      {{$getDateFormat(item.documentDate)}}
+  </template>
+      <template v-slot:[`item.responses[0].send_date`]="{ item }">
+      {{$getDateFormat(item.responses[0] && item.responses[0].send_date)}}
+  </template>
+  
+  <!-- <template v-slot:[`item.structure`]="{ item }">
+    {{ item}}
+  </template> -->
 </v-data-table>
 </div>
 

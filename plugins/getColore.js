@@ -23,6 +23,10 @@ export default (context, inject) => {
             break;
             case 'rejete': return 'red'
             break;
+            case 'traite': return 'green'
+            break;
+            case 'en-cours-de-traitement': return 'orange'
+            break;
             default:  return ''
         }
     }

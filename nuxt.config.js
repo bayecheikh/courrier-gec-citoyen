@@ -34,6 +34,9 @@ export default {
   plugins: [
     '~/plugins/api.js',
     '~/plugins/helpers.js',
+    '~/plugins/getColore.js',
+    '~/plugins/getStatus.js',
+    '~/plugins/getDateFormat.js',
     { src: '~/plugins/TiptapVuetify', mode: 'client' }
   ],
 

@@ -9,14 +9,19 @@
       <v-row class="border-grey mb-5">
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-6 col-sm-12 col-lg-6 ">
-            <div class="d-flex text-label mb-5">Objet : <div class="text-green text-value">{{this.detailCourrier.subject}}</div> </div>
-            <div class="d-flex text-label mb-5">Organisme : <div class="text-green text-value">{{this.detailCourrier.structure}}</div> </div>
-            <div class="d-flex text-label mb-5">Code de suivi : <div class="text-green text-value">{{this.detailCourrier.idSuivi}}</div> </div>
+            <div class="d-flex text-label mb-5">Objet : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.subject}}</div> </div>
+            <div class="d-flex text-label mb-5">Organisme : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.structure && this.detailCourrier.structure.description}}</div> </div>
+            <div class="d-flex text-label mb-5">Code de suivi : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.idSuivi}}</div> </div>
           </div>
           <div class="col-md-6 col-sm-12 col-lg-6 ">
-            <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{this.detailCourrier.createdAt}}</div> </div>
-            <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{this.detailCourrier.documentDate}}</div> </div>
-            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value">{{this.detailCourrier.status}}</div> </div>
+            <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.createdAt}}</div> </div>
+            <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.documentDate}}</div> </div>
+            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value ml-3"><v-chip
+        :color="$getColore(this.detailCourrier && this.detailCourrier.traitement_status_slug)"
+        outlined
+      >
+        {{ $getStatus(this.detailCourrier && this.detailCourrier.traitement_status_slug) }}
+      </v-chip></div> </div>
           </div>
         </v-col>
       </v-row>  
@@ -24,6 +29,9 @@
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Courrier</h2></div>
+            <div>
+              <embed height="800" :src="'data:application/pdf;base64,'+this.detailCourrier.encodedFile+'#toolbar=0'" class="embeded-courrier col-12"> 
+            </div>
           </div>
         </v-col>
       </v-row> 

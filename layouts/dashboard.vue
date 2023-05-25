@@ -13,9 +13,9 @@
         style="height:63px;"
         class="pl-3 pt-3"
       >
-        <nuxt-link to="/">
+        <a href="https://siteweb-gec-citoyen.vercel.app/">
           <img src="@/static/logo.png" alt="" width="200">
-        </nuxt-link>
+        </a>
       </v-sheet>
 
       <v-divider></v-divider>
@@ -130,13 +130,13 @@
   import AppToolbar from '@/components/AppToolbar'
   export default {
     /* middleware: 'auth', */
-    middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
+    /* middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
       console.log('token: ++++++++++ ',$getToken())
       if ($getToken()==null || $getUser()==null || $isLogged()==null || $isLogged()==false) {
         $loggout()
-        return redirect('/login')
+        return redirect('https://siteweb-gec-citoyen.vercel.app/')
       }
-    },
+    }, */
     components: {
       AppToolbar
     },
@@ -168,10 +168,10 @@
             this.$loggout()
             this.loading = false;
             
-            this.$router.push('/login');
+            this.$router.push('https://siteweb-gec-citoyen.vercel.app/');
           })
         } catch (e) {
-          this.$store.dispatch('toast/getMessage',{type:'error',text:e})
+         // this.$store.dispatch('toast/getMessage',{type:'error',text:e})
           console.log(e)
           this.loading = false;
         }

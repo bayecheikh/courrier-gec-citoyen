@@ -1,6 +1,6 @@
 export default {
     getList({commit}){
-      this.$gecApi.$get('/courriers/644bf3119bedac022588afe2/mescourriers')
+      this.$gecApi.$get('/courriers/644bf2489bedac022588afe0/mescourriers')
       .then(async (response) => { 
         console.log('Données reçues contenu+++++++++++',response)
             await commit('initlist', response.data.data)

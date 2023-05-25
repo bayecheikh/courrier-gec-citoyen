@@ -52,6 +52,20 @@
           </template>
         </v-menu>
       </template>
+      <template v-slot:[`item.traitement_status_slug`]="{ item }">
+      <v-chip
+        :color="$getColore(item.traitement_status_slug)"
+        outlined
+      >
+        {{ $getStatus(item.traitement_status_slug) }}
+      </v-chip>
+  </template>
+      <template v-slot:[`item.documentDate`]="{ item }">
+      {{$getDateFormat(item.documentDate)}}
+  </template>
+      <template v-slot:[`item.responses[0].send_date`]="{ item }">
+      {{$getDateFormat(item.responses[0] && item.responses[0].send_date)}}
+  </template>
 </v-data-table>
 </div>
 
@@ -75,6 +89,7 @@ import { mapMutations, mapGetters } from 'vuex'
       }
     },
     methods: {
+      
       visualiserItem (item) {   
         this.$store.dispatch('courriers/getDetail',item)
         this.$router.push('/courriers/detail/'+item.id);
