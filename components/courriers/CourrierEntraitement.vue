@@ -33,7 +33,7 @@
 </v-card-title>
 <v-data-table
   :headers="headers"
-  :items="listcourriers.filter(item => item.status=='INIT')"
+  :items="listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement')"
   item-key="id"
   items-per-page="20"
   class="flat mt-5"

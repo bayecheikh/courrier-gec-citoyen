@@ -32,7 +32,7 @@
         
         <h1 class="text-chiffre">{{
             (
-              this.listcourriers.filter(item => item.status=='END').length
+              this.listcourriers.filter(item => item.traitement_status_slug=='traite').length
             ).toLocaleString() }}
         </h1>
         <p class="text-detail">Voir detail</p>
@@ -51,7 +51,7 @@
         
         <h1 class="text-chiffre">{{
             (
-              this.listcourriers.filter(item => item.status=='INIT').length
+              this.listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement').length
             ).toLocaleString() }}
         </h1>
         <p class="text-detail">Voir detail</p>
