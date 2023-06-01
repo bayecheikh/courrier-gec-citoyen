@@ -37,7 +37,7 @@
             <div class="d-flex text-label mb-5"><h2>Pièces-jointes</h2></div>
             
             <div class="card" v-if="this.detailCourrier.pieces_jointes.length">
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush d-flex">
                       <li 
                         v-for="(file, index) in this.detailCourrier.pieces_jointes"
                         :key="index"
