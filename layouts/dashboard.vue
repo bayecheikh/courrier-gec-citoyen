@@ -137,14 +137,7 @@
 <script>
   import AppToolbar from '@/components/AppToolbar'
   export default {
-    /* middleware: 'auth', */
-    /* middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
-      console.log('token: ++++++++++ ',$getToken())
-      if ($getToken()==null || $getUser()==null || $isLogged()==null || $isLogged()==false) {
-        $loggout()
-        return redirect('https://siteweb-gec-citoyen.vercel.app/')
-      }
-    }, */
+
     components: {
       AppToolbar
     },
