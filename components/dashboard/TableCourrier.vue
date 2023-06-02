@@ -141,7 +141,11 @@
         },
         customFilter(item,search,filter){
           search.toString().includes(item.categories);
-        }
+        },
+        goToAddcourrier() {      
+        //this.$router.push('#');
+        window.location.href = 'https://siteweb-gec-citoyen.vercel.app/addcourrier'
+      },
       },
       data: () => ({
         headercourriers : [

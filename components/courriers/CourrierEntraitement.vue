@@ -159,7 +159,8 @@ import { mapMutations, mapGetters } from 'vuex'
         search.toString().includes(item.categories);
       },
       goToAddcourrier() {      
-        this.$router.push('#');
+        //this.$router.push('#');
+        window.location.href = 'https://siteweb-gec-citoyen.vercel.app/addcourrier'
       },
     },
     data: () => ({

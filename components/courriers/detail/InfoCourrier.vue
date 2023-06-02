@@ -17,7 +17,7 @@
           <div class="col-md-6 col-sm-12 col-lg-6 ">
             <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.createdAt}}</div> </div>
             <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.documentDate}}</div> </div>
-            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value ml-3"><v-chip
+            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value ml-3 mb-5"><v-chip 
                 :color="$getColore(this.detailCourrier && this.detailCourrier.traitement_status_slug)"
                 outlined
               >
@@ -42,8 +42,8 @@
                         v-for="(file, index) in this.detailCourrier.pieces_jointes"
                         :key="index"
                         >
-                        <a class="list-group-item d-flex justify-content-between" target="_blank" :href="'data:application/pdf;base64,'+file.encodedFile">
-                          <span><img src="@/static/images/icons/file.png" width="50">
+                        <a v-if="file.title" class="list-group-item d-flex justify-content-between" target="_blank" :href="'data:application/pdf;base64,'+file.encodedFile">
+                          <span><img src="@/static/images/icons/file.png" width="50" >
                           {{ file.title }}</span>
                         </a>
                         

@@ -16,7 +16,10 @@
               this.listcourriers.length
             ).toLocaleString() }}
         </h1>
-        <p class="text-detail">Voir detail</p>
+       
+        <NuxtLink class="text-detail" to="/courrierenvoyes">
+          Voir detail
+        </NuxtLink>
       </div>
     </v-col>
     <v-col md="4" sm="12" lg="4" class="">
@@ -35,7 +38,10 @@
               this.listcourriers.filter(item => item.traitement_status_slug=='traite').length
             ).toLocaleString() }}
         </h1>
-        <p class="text-detail">Voir detail</p>
+        
+        <NuxtLink class="text-detail" to="/courrierrecus">
+          Voir detail
+        </NuxtLink>
       </div>
     </v-col>
     <v-col md="4" sm="12" lg="4" class="">
@@ -54,7 +60,9 @@
               this.listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement').length
             ).toLocaleString() }}
         </h1>
-        <p class="text-detail">Voir detail</p>
+        <NuxtLink class="text-detail" to="/courrierentraitements">
+          Voir detail
+        </NuxtLink>
       </div>
     </v-col>
   </v-row>
@@ -71,9 +79,29 @@ import { mapMutations, mapGetters } from 'vuex'
       return {
       };
     },
+    methods:{
+      goToListCourrier(value) { 
+        switch (value) {
+          case 'courrierrecus':{
+            this.$router.push('/courrierrecus');
+          };
+          case 'courrierenvoyes':{
+            this.$router.push('/courrierenvoyes');
+          };
+          case 'courrierentraitements':{
+            this.$router.push('/courrierentraitements');
+          }
+        }    
+        
+       // window.location.href = 'https://siteweb-gec-citoyen.vercel.app/addcourrier'
+      },
+    }
   }
 </script>
 <style scoped>
+.text-detail{
+  cursor: pointer;
+}
 .bg-marron {
   background-color: #fff;
   border-radius: 5px;
