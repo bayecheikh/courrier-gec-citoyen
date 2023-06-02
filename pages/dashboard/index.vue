@@ -25,7 +25,26 @@ export default {
     LeftMenu,
     TableCourrier,
   },
+  /* middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
+    console.log('token: ++++++++++ ',$getToken())
+    if ($getToken()==null || $getUser()==null || $isLogged()==null || $isLogged()==false) {
+      $loggout()
+      return redirect('https://siteweb-gec-citoyen.vercel.app/')
+    }
+  }, */
   mounted: function () {
+    if (this.$route.query.gecToken) {
+            try {
+              localStorage.setItem('gecToken', this.$route.query.gecToken)
+              localStorage.setItem('gecLoggedInUser',this.$route.query.gecLoggedInUser)
+              localStorage.setItem('gecIdUser', this.$route.query.gecIdUser)
+              localStorage.setItem('gecIsAuthenticated', this.$route.query.gecIsAuthenticated)
+          
+            }catch (error) {
+              console.error(error);
+            }
+            this.$router.push('/dashboard')
+          }
     this.$store.dispatch('courriers/getList')
   },
   data() {

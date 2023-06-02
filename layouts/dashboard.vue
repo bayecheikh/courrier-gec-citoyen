@@ -47,8 +47,19 @@
 
       <v-toolbar-title class="custom-top-title pl-5">PLATEFORME <span class="color-green">GESTION ELECTRONIQUE DE COURRIERS</span> DU BENIN</v-toolbar-title>
       <v-spacer></v-spacer>
+      <div class="mr-2"><h5>{{loggedInUser && loggedInUser.name}}</h5> </div>
+      <v-avatar size="30px">
+        <img src="@/static/avatar/user.png" alt="avatar"/>
+      </v-avatar>
+      <v-spacer></v-spacer>
+      <v-btn text color="#000" depressed @click="logout" :loading="loading">
+        <v-icon left>
+          mdi-logout
+        </v-icon>Se déconnecter
+      </v-btn> 
+       
 
-      <v-menu class="hidden-sm-and-down"
+      <!-- <v-menu class="hidden-sm-and-down"
           offset-y origin="center center" :nudge-right="140" :nudge-bottom="10" transition="scale-transition"
         >
           <template v-slot:activator="{ on, attrs }">
@@ -105,14 +116,11 @@
                   </v-icon>Se déconnecter
                 </v-btn>               
               </v-card-actions>
-              <!-- <v-card-actions>
-                <v-btn flat color="none" @click="logout" :loading="loading">Deconnexion</v-btn>               
-              </v-card-actions> -->
                 
               </v-card>
             </div>
           </template>
-      </v-menu>
+      </v-menu> -->
     </v-app-bar>
     <v-main class="bg-grey">
       <!--  -->
@@ -144,6 +152,10 @@
       this.layout= this.$getUserMenu()
       this.isAuthenticate = this.$isLogged()
       this.loggedInUser = this.$getUser() 
+      if (this.$getToken()==null || this.$getToken()=="undefined" || !this.$getToken()) {
+        this.$loggout()
+       window.location.href ='https://siteweb-gec-citoyen.vercel.app/?logout=true'
+      }
     },
     data: () => ({
       layout:[],
@@ -161,20 +173,16 @@
     }),
     methods: {
       async logout() {
+
         try {
             this.loading = true; 
-           
-            await this.$gecApi.$post('/logout').then(async (response) => { 
             this.$loggout()
-            this.loading = false;
-            
-            this.$router.push('https://siteweb-gec-citoyen.vercel.app/');
-          })
         } catch (e) {
          // this.$store.dispatch('toast/getMessage',{type:'error',text:e})
           console.log(e)
           this.loading = false;
         }
+        window.location.href = "https://siteweb-gec-citoyen.vercel.app/?logout=true"
       },
       goToProfile(){ 
         this.$router.push('/profil/me');   

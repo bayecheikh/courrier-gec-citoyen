@@ -16,7 +16,7 @@
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter un courrier
+          Déposer un courrier
         </v-btn>
       </div>
     </div>

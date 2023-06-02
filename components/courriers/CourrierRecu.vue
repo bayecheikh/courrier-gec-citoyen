@@ -26,7 +26,7 @@
             <v-icon left>
               mdi-plus
             </v-icon>
-            Ajouter un courrier
+            Déposer un courrier
           </v-btn>
         </v-col>
       </v-row>
@@ -37,7 +37,7 @@
   item-key="id"
   items-per-page="20"
   class="flat mt-5"
-  :loading="listcourriers.length?false:true" 
+  :loading="listcourriers.filter(item => item.traitement_status_slug=='traite').length>=0?false:true" 
   loading-text="Chargement... Patientez svp"
   :rows-per-page-items="[10,20,30,40,50]"
   

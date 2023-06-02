@@ -3,15 +3,15 @@ import layoutadmin from '@/static/data/layoutadmin'
 export default function ({store ,redirect}, inject) { 
 
     const getToken = () => {
-        return localStorage.getItem('gecAdminToken')
+        return localStorage.getItem('gecToken')
     }
     
     const getUser = () => {
-        return JSON.parse(localStorage.getItem('gecAdminLoggedInUser'));
+        return JSON.parse(localStorage.getItem('gecLoggedInUser'));
     }
     
     const isLogged = () => {
-        return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
+        return JSON.parse(localStorage.getItem('gecIsAuthenticated'))
     }
 
     /* const verifySession = () => {
@@ -110,10 +110,10 @@ export default function ({store ,redirect}, inject) {
     }
     
     const loggout = async () => {
-        await localStorage.removeItem('gecAdminToken')
-        await localStorage.removeItem('gecAdminLoggedInUser')
-        await localStorage.removeItem('layout')
-        await localStorage.removeItem('gecAdminIsAuthenticated') 
+        await localStorage.removeItem('gecToken')
+        await localStorage.removeItem('gecLoggedInUser')
+        //await localStorage.removeItem('layout')
+        await localStorage.removeItem('gecIsAuthenticated') 
     }
 
 

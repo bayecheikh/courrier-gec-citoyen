@@ -12,7 +12,18 @@
           }
           else
           this.$router.push('/dashboard') */
-          this.$router.push('/dashboard')
+
+          if (this.$route.query.gecToken) {
+            try {
+              localStorage.setItem('gecToken', this.$route.query.gecToken)
+              localStorage.setItem('gecLoggedInUser',this.$route.query.gecLoggedInUser)
+              localStorage.setItem('gecIsAuthenticated', this.$route.query.gecIsAuthenticated)
+          
+            }catch (error) {
+              console.error(error);
+            }
+            this.$router.push('/dashboard')
+          }
         },
           methods:{
             getToken(){
