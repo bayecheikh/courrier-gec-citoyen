@@ -39,7 +39,18 @@
             <div class="d-flex text-label mb-5"><h2>Pièces-jointes</h2></div>
             
             <div class="card" v-if="this.detailCourrier.pieces_jointes && this.detailCourrier.pieces_jointes.length">
-                <ul class="list-group list-group-flush d-flex">
+                
+              <v-row class="">
+                <v-col lg="3" md="3" sm="12" v-for="(file, index) in this.detailCourrier.pieces_jointes"
+                        :key="index">
+                        <a v-if="file.title" class="list-group-item d-flex justify-content-between" target="_blank" :href="'data:application/pdf;base64,'+file.encodedFile">
+                          <span><img src="@/static/images/icons/file.png" width="50" >
+                          {{ file.title }}</span>
+                        </a>
+                </v-col>
+
+              </v-row>
+              <!-- <ul class="list-group list-group-flush d-flex">
                       <li 
                         v-for="(file, index) in this.detailCourrier.pieces_jointes"
                         :key="index"
@@ -50,7 +61,7 @@
                         </a>
                         
                       </li>
-                </ul>
+                </ul> -->
             </div>
           </div>
         </v-col>
