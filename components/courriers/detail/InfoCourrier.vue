@@ -26,8 +26,12 @@
           </div>
           
           <div class="col-md-12 col-sm-12 col-lg-12 border-grey " v-if="this.detailCourrier.responses && this.detailCourrier.responses.length">
-            <div class="d-flex text-label mb-5">Objet : <span v-html="this.detailCourrier && this.detailCourrier.responses && this.detailCourrier.responses[0] && this.detailCourrier.responses[0].object"></span></div>
-          <div class="d-flex mb-5" v-html="this.detailCourrier && this.detailCourrier.responses && this.detailCourrier.responses[0] && this.detailCourrier.responses[0].body"></div> 
+            <h2 class="mb-5">Reponses</h2>
+            <div class="border-grey pl-5 pr-5 pt-5 mb-5" v-for="(reponse, index) in this.detailCourrier.responses" :key="index">
+              <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(reponse.send_date)}}</div> </div>
+              <div class="d-flex text-label mb-5">Objet : <span v-html="reponse.object"></span></div>
+              <div class="d-flex mb-5" v-html="reponse.body"></div> 
+            </div>
           </div>
           
         </v-col>
