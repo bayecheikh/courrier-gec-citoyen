@@ -17,7 +17,7 @@
           <div class="col-md-6 col-sm-12 col-lg-6 ">
             <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(this.detailCourrier && this.detailCourrier.createdAt)}}</div> </div>
             <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{$getDateFormat(this.detailCourrier && this.detailCourrier.documentDate)}}</div> </div>
-            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value ml-3 mb-5"><v-chip 
+            <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value ml-3 mb-status"><v-chip 
                 :color="$getColore(this.detailCourrier && this.detailCourrier.traitement_status_slug)"
                 outlined
               >
@@ -26,9 +26,8 @@
           </div>
           
           <div class="col-md-12 col-sm-12 col-lg-12 border-grey " v-if="this.detailCourrier.responses && this.detailCourrier.responses.length">
-            <h3 class="mb-5">Réponse</h3>
-            <div class="d-flex text-label mb-5">Objet: <span v-html="this.detailCourrier && this.detailCourrier.responses && this.detailCourrier.responses[0] && this.detailCourrier.responses[0].object"></span></div>
-          <div class="d-flex text-label mb-5"><div class="text-green text-value" v-html="this.detailCourrier && this.detailCourrier.responses && this.detailCourrier.responses[0] && this.detailCourrier.responses[0].body"></div> </div>
+            <div class="d-flex text-label mb-5">Objet : <span v-html="this.detailCourrier && this.detailCourrier.responses && this.detailCourrier.responses[0] && this.detailCourrier.responses[0].object"></span></div>
+          <div class="d-flex mb-5" v-html="this.detailCourrier && this.detailCourrier.responses && this.detailCourrier.responses[0] && this.detailCourrier.responses[0].body"></div> 
           </div>
           
         </v-col>
@@ -43,9 +42,9 @@
               <v-row class="">
                 <v-col lg="3" md="3" sm="12" v-for="(file, index) in this.detailCourrier.pieces_jointes"
                         :key="index">
-                        <a v-if="file.title" class="list-group-item d-flex justify-content-between" target="_blank" :href="'data:application/pdf;base64,'+file.encodedFile">
-                          <span><img src="@/static/images/icons/file.png" width="50" >
-                          {{ file.title }}</span>
+                        <a v-if="file.title" class="custom-link d-flex align-items-start flex-column" target="_blank" :href="'data:application/pdf;base64,'+file.encodedFile">
+                          <img src="@/static/images/icons/file.png" width="50" >
+                          <span>{{ file.title }}</span>
                         </a>
                 </v-col>
 
@@ -66,12 +65,15 @@
           </div>
         </v-col>
       </v-row>
-      <v-row class="border-grey mb-5" v-if="this.detailCourrier.responses && !this.detailCourrier.responses.length">
+      <v-row class="border-grey mb-5" >
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Courrier principal</h2></div>
-            <div>
+            <div v-if="this.detailCourrier.responses && !this.detailCourrier.responses.length">
               <embed height="800" :src="'data:application/pdf;base64,'+this.detailCourrier.encodedFile+'#toolbar=0'" class="embeded-courrier col-12"> 
+            </div>
+            <div v-if="this.detailCourrier.responses && this.detailCourrier.responses.length && this.detailCourrier.pieces_jointes && this.detailCourrier.pieces_jointes[0] && this.detailCourrier.pieces_jointes[0].format=='pdf'">
+              <embed height="800" :src="'data:application/pdf;base64,'+this.detailCourrier.pieces_jointes[0].encodedFile+'#toolbar=0'" class="embeded-courrier col-12"> 
             </div>
           </div>
         </v-col>
@@ -127,3 +129,20 @@ import { mapMutations, mapGetters } from 'vuex'
     },
   }
 </script>
+<style scoped>
+.text-label{
+font-size: 14px;
+font-weight: 600;
+}
+.text-value{
+  font-size: 12px !important;
+font-weight: 300 !important;
+margin-left: 10px;
+}
+.mb-status{
+  margin-top: -7px;
+}
+.custom-link{
+  text-decoration: none;
+}
+</style>
