@@ -31,12 +31,34 @@
               <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(reponse.send_date)}}</div> </div>
               <div class="d-flex text-label mb-5">Objet : <span v-html="reponse.object"></span></div>
               <div class="d-flex mb-5" v-html="reponse.body"></div> 
+              
+              <div class="d-flex text-label mb-5">Piéces-jointes</div>
+              <v-row class="" v-if="reponse.document && reponse.document.attachments">
+                <v-col lg="3" md="3" sm="12" v-for="(file, index) in reponse.document.attachments"
+                        :key="index" class="">
+                        <div class="custom-link d-flex align-items-start flex-column">
+                          {{ index+1 }}
+                          <img class="file" ref="file" @click="getDocument(file.id)" src="@/static/images/icons/file.png" width="50" >
+                          <!-- <span>{{getDocument(file.id)}}</span> -->
+                        </div>
+                </v-col>
+                <v-col md="12" lg="12" sm="12" >
+                  <span>{{document_link.filename}}</span>
+                  <div v-if="document_link && document_link.originalFormat=='pdf'">
+                    <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
+                  </div>
+                  <div v-if="document_link && document_link.originalFormat=='docx'">
+                    <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
+                  </div>
+                </v-col>
+
+              </v-row>
             </div>
           </div>
           
         </v-col>
       </v-row>  
-      <v-row class="border-grey mb-5">
+      <v-row class="border-grey mb-5" v-if="!this.detailCourrier.responses.length">
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Pièces-jointes</h2></div>
@@ -69,15 +91,12 @@
           </div>
         </v-col>
       </v-row>
-      <v-row class="border-grey mb-5" >
+      <v-row class="border-grey mb-5" v-if="!this.detailCourrier.responses.length">
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Courrier principal</h2></div>
             <div v-if="this.detailCourrier.responses && !this.detailCourrier.responses.length">
               <embed height="800" :src="'data:application/pdf;base64,'+this.detailCourrier.encodedFile+'#toolbar=0'" class="embeded-courrier col-12"> 
-            </div>
-            <div v-if="this.detailCourrier.responses && this.detailCourrier.responses.length && this.detailCourrier.pieces_jointes && this.detailCourrier.pieces_jointes[0] && this.detailCourrier.pieces_jointes[0].format=='pdf'">
-              <embed height="800" :src="'data:application/pdf;base64,'+this.detailCourrier.pieces_jointes[0].encodedFile+'#toolbar=0'" class="embeded-courrier col-12"> 
             </div>
           </div>
         </v-col>
@@ -99,7 +118,9 @@ import { mapMutations, mapGetters } from 'vuex'
     data () {
       return {
         id : this.$nuxt._route.params.id,
-        pieces_jointes : []
+        pieces_jointes : [],
+        document_link:'#',
+        pieces_jointes_reponses:[]
       }
     },
     methods: {
@@ -108,6 +129,21 @@ import { mapMutations, mapGetters } from 'vuex'
       },
       retour(){       
           this.$router.push('/courriers');
+      },
+      getDocument(id){
+          this.progress=true
+          let idStructure = this.detailCourrier.structure._id
+          this.$gecApi.$get('/attachments/'+id+'/'+idStructure)
+        .then(async (response) => {
+            console.log('Detail document ++++++++++',response.data.data)
+            this.document_link = response.data.data
+            
+        }).catch((error) => {
+            console.log('Code error ++++++: ', error?.response?.data?.message)
+        }).finally(() => {
+            console.log('Requête envoyée ')
+        });
+        //console.log('total items++++++++++',this.paginationstructure)
       },
       /* getDetail(id){
           this.progress=true
@@ -148,5 +184,8 @@ margin-left: 10px;
 }
 .custom-link{
   text-decoration: none;
+}
+.file{
+  cursor: pointer;
 }
 </style>
