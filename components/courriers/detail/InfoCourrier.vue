@@ -36,20 +36,56 @@
               <v-row class="" v-if="reponse.document && reponse.document.attachments">
                 <v-col lg="3" md="3" sm="12" v-for="(file, index) in reponse.document.attachments"
                         :key="index" class="">
-                        <div class="custom-link d-flex align-items-start flex-column">
-                          {{ index+1 }}
-                          <img class="file" ref="file" @click="getDocument(file.id)" src="@/static/images/icons/file.png" width="50" >
-                          <!-- <span>{{getDocument(file.id)}}</span> -->
+                        <template>
+                        <div class="text-center">
+                          <!-- <v-btn
+                            color="primary"
+                            @click="dialog = true"
+                          >
+                            Open Dialog
+                          </v-btn> -->
+                          <div class="d-flex justify-start flex-column">
+                          
+                            <img class="file" :ref="'file'+file.id" @click="getDocument(file.id)" src="@/static/images/icons/file.png" width="50" >                         
+                            <span class="d-flex justify-star">Pièce-jointe ({{ index+1 }})</span>
+                            <!-- <span>{{getDocument(file.id)}}</span> -->
+                          </div>
+
+                          
                         </div>
+                      </template>
                 </v-col>
-                <v-col md="12" lg="12" sm="12" >
-                  <span>{{document_link.filename}}</span>
-                  <div v-if="document_link && document_link.originalFormat=='pdf'">
-                    <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
-                  </div>
-                  <div v-if="document_link && document_link.originalFormat=='docx'">
-                    <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
-                  </div>
+                <v-col lg="12" md="12" sm="12">
+                  <v-dialog
+                            v-model="dialog"
+                            width="1024"
+                            persistent
+                          >
+                            <v-card>
+                              <v-card-title>{{document_link.filename}}
+                                  <v-spacer></v-spacer>
+                                <v-btn icon @click="dialog = false" >
+                                  <v-icon>mdi-close</v-icon>
+                                </v-btn>
+                              </v-card-title>
+                              <!-- <v-card-title class="text-h5 d-flex">
+                                <span>{{document_link.filename}}</span>
+                                <v-spacer></v-spacer>
+                                <v-btn color="primary" block @click="dialog = false">Close Dialog</v-btn>
+                              </v-card-title> -->
+                              <v-card-text>
+                                <v-col md="12" lg="12" sm="12" >
+                                  
+                                  <div v-if="document_link && document_link.originalFormat=='pdf'">
+                                    <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
+                                  </div>
+                                  <div v-if="document_link && document_link.originalFormat=='docx'">
+                                    <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
+                                  </div>
+                                </v-col>
+                              </v-card-text>
+                            </v-card>
+                          </v-dialog>
                 </v-col>
 
               </v-row>
@@ -111,6 +147,7 @@ import { mapMutations, mapGetters } from 'vuex'
   export default {
     mounted: function() {
       //this.getDetail(this.id)
+      
     },
     computed: mapGetters({
       detailCourrier: 'courriers/detailcourrier'
@@ -120,7 +157,8 @@ import { mapMutations, mapGetters } from 'vuex'
         id : this.$nuxt._route.params.id,
         pieces_jointes : [],
         document_link:'#',
-        pieces_jointes_reponses:[]
+        pieces_jointes_reponses:[],
+        dialog: false,
       }
     },
     methods: {
@@ -131,12 +169,14 @@ import { mapMutations, mapGetters } from 'vuex'
           this.$router.push('/courriers');
       },
       getDocument(id){
+        this.dialog=true
           this.progress=true
           let idStructure = this.detailCourrier.structure._id
           this.$gecApi.$get('/attachments/'+id+'/'+idStructure)
         .then(async (response) => {
             console.log('Detail document ++++++++++',response.data.data)
             this.document_link = response.data.data
+            this.pieces_jointes_reponses.push(this.document_link)
             
         }).catch((error) => {
             console.log('Code error ++++++: ', error?.response?.data?.message)
