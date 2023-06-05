@@ -64,7 +64,7 @@
                             <v-card>
                               <v-card-title>{{document_link.filename}}
                                   <v-spacer></v-spacer>
-                                <v-btn icon @click="dialog = false" >
+                                <v-btn class="custom-close" color="red" icon @click="dialog = false" >
                                   <v-icon>mdi-close</v-icon>
                                 </v-btn>
                               </v-card-title>
@@ -227,5 +227,12 @@ margin-left: 10px;
 }
 .file{
   cursor: pointer;
+}
+.v-dialog {
+  overflow-y: unset !important;
+}
+
+.custom-close:hover{
+  background: rgba(255, 0, 0, 0.212);
 }
 </style>
