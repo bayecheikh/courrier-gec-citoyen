@@ -230,3 +230,6 @@ html {
   position: fixed;
   border-right: solid #0a3764 !important;
 }
+.v-dialog {
+  overflow-y: unset !important;
+}
