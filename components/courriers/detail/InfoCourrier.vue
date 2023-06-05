@@ -15,8 +15,8 @@
             <div class="d-flex text-label mb-5">Code de suivi : <div class="text-green text-value">{{this.detailCourrier && this.detailCourrier.idSuivi}}</div> </div>
           </div>
           <div class="col-md-6 col-sm-12 col-lg-6 ">
-            <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(this.detailCourrier && this.detailCourrier.createdAt)}}</div> </div>
-            <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{$getDateFormat(this.detailCourrier && this.detailCourrier.documentDate)}}</div> </div>
+            <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(this.detailCourrier && this.detailCourrier.documentDate)}}</div> </div>
+<!--             <div class="d-flex text-label mb-5">Date de réception : <div class="text-green text-value">{{$getDateFormat(this.detailCourrier && this.detailCourrier.createdAt)}}</div> </div> -->
             <div class="d-flex text-label mb-5">Statut : <div class="text-green text-value ml-3 mb-status"><v-chip 
                 :color="$getColore(this.detailCourrier && this.detailCourrier.traitement_status_slug)"
                 outlined

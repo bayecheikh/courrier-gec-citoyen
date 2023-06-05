@@ -11,7 +11,7 @@
       <v-icon left>
         mdi-arrow-left
       </v-icon>
-      Retour à la liste
+      Retour
     </v-btn>
   </v-row>
 </template>
@@ -47,7 +47,7 @@ import { mapMutations, mapGetters } from 'vuex'
     methods: {
 
       retour(){       
-        this.$router.push('/courrierenvoyes');
+        this.$router.push('/dashboard');
       },
       reinitialiser(){  
         this.dialog = true    

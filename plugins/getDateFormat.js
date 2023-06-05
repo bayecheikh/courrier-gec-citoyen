@@ -3,7 +3,7 @@ export default (context, inject) => {
         if (!item) { // d.getTime() or d.valueOf() will also work
         return '';
         } else {
-        return new Date(item).toLocaleString('fr-FR');
+        return new Date(item).toLocaleDateString('fr-FR');
         }  
     }
     // Inject $getColore(status) in Vue, context and store.
