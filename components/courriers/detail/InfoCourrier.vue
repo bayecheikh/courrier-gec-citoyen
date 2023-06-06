@@ -27,6 +27,16 @@
           
           <div class="col-md-12 col-sm-12 col-lg-12 border-grey " v-if="this.detailCourrier.responses && this.detailCourrier.responses.length">
             <h2 class="mb-5">Reponses</h2>
+            <div class=" loader" v-if="progress">
+              <v-progress-circular
+                                  
+                                    indeterminate
+                                    color="white"
+                                    class="mb-0"
+                                  ></v-progress-circular>
+                                  
+            </div>
+            
             <div class="border-grey pl-5 pr-5 pt-5 mb-5" v-for="(reponse, index) in this.detailCourrier.responses" :key="index">
               <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(reponse.send_date)}}</div> </div>
               <div class="d-flex text-label mb-5">Objet : <span v-html="reponse.object"></span></div>
@@ -75,11 +85,14 @@
                               </v-card-title> -->
                               <v-card-text class="bg-grey-dialog">
                                 <v-col md="12" lg="12" sm="12" >
+                                 
+                                  <!-- <p class="text-sm-center color-white" v-if="progress"> Chargement du document ...</p> -->
                                   
-                                  <div v-if="document_link && document_link.originalFormat=='pdf'">
+                                  
+                                  <div v-if="!progress && document_link && document_link.originalFormat=='pdf'">
                                     <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
                                   </div>
-                                  <div v-if="document_link && document_link.originalFormat=='docx'">
+                                  <div v-if="!progress && document_link && document_link.originalFormat=='docx'">
                                     <embed height="800" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
                                   </div>
                                 </v-col>
@@ -159,6 +172,7 @@ import { mapMutations, mapGetters } from 'vuex'
         document_link:'#',
         pieces_jointes_reponses:[],
         dialog: false,
+        progress:false
       }
     },
     methods: {
@@ -169,7 +183,7 @@ import { mapMutations, mapGetters } from 'vuex'
           this.$router.push('/courriers');
       },
       getDocument(id){
-        this.dialog=true
+        
           this.progress=true
           let idStructure = this.detailCourrier.structure._id
           this.$gecApi.$get('/attachments/'+id+'/'+idStructure)
@@ -177,11 +191,13 @@ import { mapMutations, mapGetters } from 'vuex'
             console.log('Detail document ++++++++++',response.data.data)
             this.document_link = response.data.data
             this.pieces_jointes_reponses.push(this.document_link)
+            this.dialog=true
             
         }).catch((error) => {
             console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
             console.log('Requête envoyée ')
+            this.progress=false
         });
         //console.log('total items++++++++++',this.paginationstructure)
       },
@@ -241,5 +257,19 @@ margin-left: 10px;
 }
 .bg-grey-dialog {
   background-color: grey;
+}
+.color-white{
+  color: #fff;
+}
+.loader{
+  position:fixed;
+  z-index: 10000;
+  top: 30%;
+  left: 50%;
+  background-color: #0a3764;;
+  padding: 100px;
+  opacity: 0.5;
+  border-radius: 10px;
+
 }
 </style>
