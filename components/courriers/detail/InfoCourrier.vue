@@ -150,7 +150,7 @@
           </div>
         </v-col>
       </v-row>
-      <v-row class="border-grey mb-5" v-if="!this.detailCourrier.responses.length">
+      <!-- <v-row class="border-grey mb-5" v-if="!this.detailCourrier.responses.length">
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Courrier principal</h2></div>
@@ -159,7 +159,7 @@
             </div>
           </div>
         </v-col>
-      </v-row> 
+      </v-row> --> 
                      
     </v-card-text>
   </v-card>
