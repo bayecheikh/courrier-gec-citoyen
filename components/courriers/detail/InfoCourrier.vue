@@ -37,7 +37,7 @@
                                   <p class="text-sm-center" v-if="progress"> Chargement du document ...</p>
             </div>
             
-            <div class="border-grey pl-5 pr-5 pt-5 mb-5" v-for="(reponse, index) in this.detailCourrier.responses" :key="index">
+            <div class="border-grey pl-5 pr-5 pt-5 mb-5" v-for="(reponse, index) in this.detailCourrier.responses && this.detailCourrier.responses" :key="index">
               <div class="d-flex text-label mb-5">Date d'envoi : <div class="text-green text-value">{{$getDateFormat(reponse.send_date)}}</div> </div>
               <div class="d-flex text-label mb-5">Objet : <span v-html="reponse.object"></span></div>
               <div class="d-flex mb-5" v-html="reponse.body"></div> 
@@ -110,7 +110,7 @@
                           </v-dialog>
                 </v-col>
       </v-row> 
-      <v-row class="border-grey mb-5" v-if="!this.detailCourrier.responses.length">
+      <v-row class="border-grey mb-5" v-if="this.detailCourrier.responses && !this.detailCourrier.responses.length">
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Pièces-jointes</h2></div>
@@ -280,7 +280,7 @@ margin-left: 10px;
   background-color: #80808012;
 }
 .bg-grey-dialog {
-  background-color: grey;
+  background-color: #122a43;
 }
 .color-white{
   color: #fff;
