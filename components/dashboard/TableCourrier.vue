@@ -25,7 +25,7 @@
     item-key="id"
     items-per-page="4"
     class="flat mt-5"
-    :loading="listcourriers.length>=0?false:true" 
+    :loading="listcourriers.length==0?true:false" 
     loading-text="Chargement... Patientez svp"
     :rows-per-page-items="[10,20,30,40,50]"
     hide-default-footer

@@ -30,7 +30,7 @@
   item-key="id"
   items-per-page="20"
   class="flat pt-4"
-  :loading="listcourriers.length?false:true" 
+  :loading="listcourriers.length==0?true:false"
   loading-text="Chargement... Patientez svp"
   :rows-per-page-items="[10,20,30,40,50]"
   

@@ -32,12 +32,12 @@
       </v-row>
 </v-card-title>
 <v-data-table
-  :headers="headers"
+  :headers="this.headercourriers"
   :items="listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement')"
   item-key="id"
   items-per-page="20"
   class="flat mt-5"
-  :loading="listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement').length>=0?false:true"  
+  :loading="listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement').length==0?true:false"  
   loading-text="Chargement... Patientez svp"
   :rows-per-page-items="[10,20,30,40,50]"
   
@@ -171,9 +171,12 @@ import { mapMutations, mapGetters } from 'vuex'
             sortable: true,
             value: 'name',
         }, */
-        { text: 'Titre', value: 'titre' },
-        { text: 'Catégorie', value: 'categories',sortable: true},
-        { text: 'Actions', value: 'actions', sortable: false },
+        { text: 'Structure', value: 'structure.description' },
+        { text: 'Objet', value: 'subject' },
+        { text: 'Date d\'envoi', value: 'documentDate' },
+        { text: 'Responses', value: 'responses', align: ' d-none' },
+        { text: 'Statut', value: 'traitement_status_slug' },
+        { text: 'Actions', value: 'actions', sortable: false }
     ],
      dialog: false,
       progress:true,
