@@ -62,7 +62,7 @@
                             persistent
                           >
                             <v-card>
-                              <v-card-title>{{document_link.filename}}
+                              <v-card-title class="border-bottom-grey">{{document_link.filename}}
                                   <v-spacer></v-spacer>
                                 <v-btn class="custom-close" color="red" icon @click="dialog = false" >
                                   <v-icon>mdi-close</v-icon>
@@ -73,7 +73,7 @@
                                 <v-spacer></v-spacer>
                                 <v-btn color="primary" block @click="dialog = false">Close Dialog</v-btn>
                               </v-card-title> -->
-                              <v-card-text>
+                              <v-card-text class="bg-grey-dialog">
                                 <v-col md="12" lg="12" sm="12" >
                                   
                                   <div v-if="document_link && document_link.originalFormat=='pdf'">
@@ -234,5 +234,12 @@ margin-left: 10px;
 
 .custom-close:hover{
   background: rgba(255, 0, 0, 0.212);
+}
+.border-bottom-grey{
+  border-bottom: solid 2px #d4d4d7;
+  background-color: #80808012;
+}
+.bg-grey-dialog {
+  background-color: grey;
 }
 </style>

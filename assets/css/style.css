@@ -233,3 +233,6 @@ html {
 .v-dialog {
   overflow-y: unset !important;
 }
+.v-dialog:not(.v-dialog--fullscreen) {
+  max-height: 100% !important;
+}
