@@ -11,7 +11,7 @@
       <v-icon left>
         mdi-arrow-left
       </v-icon>
-      Retour
+      Dashboard
     </v-btn>
   </v-row>
 </template>

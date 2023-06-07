@@ -23,6 +23,12 @@
               >
               {{ $getStatus(this.detailCourrier && this.detailCourrier.traitement_status_slug) }}
             </v-chip></div> </div>
+            <div class="d-flex align-items-end "> <p class="text-label">Courrier principal d'envoi :</p>  <div class="text-green text-value">
+              <img class="file" :ref="'file'+detailCourrier._id" @click="openCourrier(detailCourrier)" src="@/static/images/icons/file.png" width="50" >                         
+              <!-- <span class="d-flex justify-star">{{detailCourrier.subject}}</span> -->
+            </div> 
+          
+          </div>
           </div>
           
           <div class="col-md-12 col-sm-12 col-lg-12 border-grey " v-if="this.detailCourrier.responses && this.detailCourrier.responses.length">
@@ -46,7 +52,7 @@
               <v-row class="" v-if="reponse.document && reponse.document.attachments">
                 <v-col lg="3" md="3" sm="12" v-for="(file, index) in reponse.document.attachments"
                         :key="index" class="">
-                        <template>
+                      <template>
                         <div class="text-center">
                           <!-- <v-btn
                             color="primary"
@@ -59,14 +65,10 @@
                             <img class="file" :ref="'file'+file.id" @click="getDocument(file.id)" src="@/static/images/icons/file.png" width="50" >                         
                             <span class="d-flex justify-star">Pièce-jointe ({{ index+1 }})</span>
                             <!-- <span>{{getDocument(file.id)}}</span> -->
-                          </div>
-
-                          
+                          </div>                        
                         </div>
                       </template>
                 </v-col>
-                
-
               </v-row>
             </div>
           </div>
@@ -113,7 +115,7 @@
       <v-row class="border-grey mb-5" v-if="this.detailCourrier.responses && !this.detailCourrier.responses.length">
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
-            <div class="d-flex text-label mb-5"><h2>Pièces-jointes</h2></div>
+            <div class="d-flex text-label mb-5"><h2>Fichiers attachés</h2></div>
             
             <div class="card" v-if="this.detailCourrier.pieces_jointes && this.detailCourrier.pieces_jointes.length">
                 
@@ -154,9 +156,8 @@
         <v-col md="12" sm="12" lg="12" text-md-left class="row d-flex justify-end ">
           <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="d-flex text-label mb-5"><h2>Courrier principal</h2></div>
-            <div v-if="this.detailCourrier.responses && !this.detailCourrier.responses.length">
-              <embed height="800" :src="'data:application/pdf;base64,'+this.detailCourrier.encodedFile+'#toolbar=0'" class="embeded-courrier col-12"> 
-            </div>
+            <img class="file" :ref="'file'+detailCourrier._id" @click="openCourrier(detailCourrier)" src="@/static/images/icons/file.png" width="50" >                         
+            <span class="d-flex justify-star">{{detailCourrier.subject}}</span>
           </div>
         </v-col>
       </v-row> --> 
@@ -218,6 +219,20 @@ import { mapMutations, mapGetters } from 'vuex'
           originalFormat : file.format,
           encodedDocument : file.encodedFile,
           filename: file.title
+        }
+        this.document_link = document
+        this.dialog=true
+        this.progress=false
+      console.log('document ++++++++++++',document)
+      //console.log('total items++++++++++',this.paginationstructure)
+    },
+    openCourrier(file){
+        this.progress=true
+        let document = {
+          mimeType : 'application/pdf',
+          originalFormat : file.format,
+          encodedDocument : file.encodedFile,
+          filename: file.subject
         }
         this.document_link = document
         this.dialog=true
