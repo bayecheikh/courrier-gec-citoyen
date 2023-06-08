@@ -5,7 +5,7 @@
           <v-col md="4" lg="4" sm="12">
             <h3>Courriers récents</h3>
           </v-col>
-          <v-col md="8" lg="8" sm="12" class="d-flex justify-end">
+          <!-- <v-col md="8" lg="8" sm="12" class="d-flex justify-end">
             <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
@@ -15,7 +15,7 @@
             dense
             hide-details
             ></v-text-field>
-          </v-col>
+          </v-col> -->
           
         </v-row>
   </v-card-title>
@@ -24,7 +24,7 @@
     :items="listcourriers"
     item-key="id"
     items-per-page="4"
-    class="flat mt-5"
+    class="flat mt-0"
     :loading="listcourriers.length==0?true:false" 
     loading-text="Chargement... Patientez svp"
     :rows-per-page-items="[10,20,30,40,50]"
