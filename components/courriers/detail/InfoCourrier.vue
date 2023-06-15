@@ -231,9 +231,9 @@ import { mapMutations, mapGetters } from 'vuex'
           let idStructure = this.detailCourrier.structure._id
           this.$gecApi.$get('/courriers/courrier-content/'+id+'/'+idStructure)
         .then(async (response) => {
-            console.log('Detail document ++++++++++',response.data.data)
-            this.document_link = response.data.data
-            this.pieces_jointes_reponses.push(this.document_link)
+            console.log('Detail document ++++++++++',response.data)
+            this.document_link = response.data
+            //this.pieces_jointes_reponses.push(this.document_link)
             this.dialog=true
             
         }).catch((error) => {
