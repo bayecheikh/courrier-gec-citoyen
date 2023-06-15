@@ -24,7 +24,7 @@
               {{ $getStatus(this.detailCourrier && this.detailCourrier.traitement_status_slug) }}
             </v-chip></div> </div>
             <div class="d-flex align-items-end "> <p class="text-label">Courrier principal d'envoi :</p>  <div class="text-green text-value">
-              <img class="file" :ref="'file'+detailCourrier._id" @click="getDocument(detailCourrier._id)" src="@/static/images/icons/file.png" width="50" >                         
+              <img class="file" :ref="'file'+detailCourrier._id" @click="openCourrier(detailCourrier._id)" src="@/static/images/icons/file.png" width="50" >                         
               <!-- <span class="d-flex justify-star">{{detailCourrier.subject}}</span> -->
             </div> 
           
@@ -227,17 +227,21 @@ import { mapMutations, mapGetters } from 'vuex'
       //console.log('total items++++++++++',this.paginationstructure)
     },
     openCourrier(file){
-        this.progress=true
-        let document = {
-          mimeType : 'application/pdf',
-          originalFormat : file.format,
-          encodedDocument : file.encodedFile,
-          filename: file.subject
-        }
-        this.document_link = document
-        this.dialog=true
-        this.progress=false
-      console.log('document ++++++++++++',document)
+      this.progress=true
+          let idStructure = this.detailCourrier.structure._id
+          this.$gecApi.$get('/courriers/courrier-content/'+id+'/'+idStructure)
+        .then(async (response) => {
+            console.log('Detail document ++++++++++',response.data.data)
+            this.document_link = response.data.data
+            this.pieces_jointes_reponses.push(this.document_link)
+            this.dialog=true
+            
+        }).catch((error) => {
+            console.log('Code error ++++++: ', error?.response?.data?.message)
+        }).finally(() => {
+            console.log('Requête envoyée ')
+            this.progress=false
+        });
       //console.log('total items++++++++++',this.paginationstructure)
     },
       /* getDetail(id){
