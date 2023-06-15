@@ -226,7 +226,7 @@ import { mapMutations, mapGetters } from 'vuex'
       console.log('document ++++++++++++',document)
       //console.log('total items++++++++++',this.paginationstructure)
     },
-    openCourrier(file){
+    openCourrier(id){
       this.progress=true
           let idStructure = this.detailCourrier.structure._id
           this.$gecApi.$get('/courriers/courrier-content/'+id+'/'+idStructure)
