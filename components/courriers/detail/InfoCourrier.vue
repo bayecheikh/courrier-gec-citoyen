@@ -24,7 +24,7 @@
               {{ $getStatus(this.detailCourrier && this.detailCourrier.traitement_status_slug) }}
             </v-chip></div> </div>
             <div class="d-flex align-items-end "> <p class="text-label">Courrier principal d'envoi :</p>  <div class="text-green text-value">
-              <img class="file" :ref="'file'+detailCourrier._id" @click="openCourrier(detailCourrier._id)" src="@/static/images/icons/file.png" width="50" >                         
+              <img class="file" :ref="'file'+detailCourrier._id" @click="openCourrier(detailCourrier.resId)" src="@/static/images/icons/file.png" width="50" >                         
               <!-- <span class="d-flex justify-star">{{detailCourrier.subject}}</span> -->
             </div> 
           
