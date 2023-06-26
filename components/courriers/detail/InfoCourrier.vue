@@ -103,7 +103,7 @@
                                   <div v-if="!progress && document_link && (document_link.extension=='pdf' || document_link.originalFormat=='pdf')" id="embed">
                                     <embed :type="document_link.mimeType" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
                                   </div>
-                                  <div v-if="!progress && document_link && (document_link.extension=='docx' || document_link.originalFormat=='docx')">
+                                  <div v-if="!progress && document_link && (document_link.extension=='docx' || document_link.originalFormat=='docx')" id="embed">
                                     <embed :type="document_link.mimeType" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
                                   </div>
                                 </v-col>
@@ -321,6 +321,9 @@ margin-left: 10px;
 }
 
 #embed .embeded-courrier{
+  height: 90% !important;
+}
+.embeded-courrier{
   height: 90% !important;
 }
 </style>
