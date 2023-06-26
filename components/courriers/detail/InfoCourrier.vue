@@ -100,11 +100,11 @@
                                   <!-- <p class="text-sm-center color-white" v-if="progress"> Chargement du document ...</p> -->
                                   
                                   
-                                  <div v-if="!progress && document_link && document_link.extension=='pdf'" id="embed">
-                                    <embed type="application/pdf" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
+                                  <div v-if="!progress && document_link && (document_link.extension=='pdf' || document_link.originalFormat=='pdf')" id="embed">
+                                    <embed :type="document_link.mimeType" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
                                   </div>
-                                  <div v-if="!progress && document_link && document_link.originalFormat=='docx'">
-                                    <embed type="application/pdf" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
+                                  <div v-if="!progress && document_link && (document_link.extension=='docx' || document_link.originalFormat=='docx')">
+                                    <embed :type="document_link.mimeType" :src="'data:'+document_link.mimeType+';base64,'+document_link.encodedDocument+'#toolbar=0'" class="embeded-courrier col-12"> 
                                   </div>
                                 </v-col>
                               </v-card-text>
