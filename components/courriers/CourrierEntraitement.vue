@@ -37,7 +37,7 @@
   item-key="id"
   items-per-page="20"
   class="flat mt-5"
-  :loading="listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement').length==0?true:false"  
+  :loading="listcourriers.filter(item => item.traitement_status_slug=='en-cours-de-traitement').length?true:false"  
   loading-text="Chargement... Patientez svp"
   :rows-per-page-items="[10,20,30,40,50]"
   
