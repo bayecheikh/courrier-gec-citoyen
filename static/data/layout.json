@@ -25,6 +25,12 @@
       "href": "/courrierentraitements",
       "title": "En cours de traitement",
       "name": "gerer-parametres"
+    },
+    {
+      "icon": "mdi-account-outline",
+      "href": "/profil",
+      "title": "Mon profil",
+      "name": "gerer-parametres"
     }
   ]
   
