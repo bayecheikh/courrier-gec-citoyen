@@ -18,26 +18,28 @@
               <div class="col-md-6 border-left">
                   <!--<p class="info-profil mb-4"><span>Prénom: </span>{{detailUtilisateur.firstname}}</p>
                   <p class="info-profil mb-4"><span>Nom: </span>{{detailUtilisateur.lastname}}</p>-->
-                  <p class="info-profil mb-4"><span>Prénom et Nom: </span>{{detailUtilisateur.name}}</p>
+                  <p class="info-profil mb-4"><span>Nom: </span>{{loggedInUser && loggedInUser.name}}</p>
                   
-                  <p class="info-profil mb-4"><span>Email : </span>{{detailUtilisateur.email}}</p>
-                  <p class="info-profil mb-4"><span>Roles : </span>
-                    <v-chip
-                      color="primary"
-                      small
-                      outlined
-                      class="my-1 mr-1"
-                      v-for="role in detailUtilisateur.roles"  :key="role.id"
-                    >
-                      {{ role.description }}
-                    </v-chip>
-                  </p>
+                  <p class="info-profil mb-4"><span>ID : </span>{{idUser}}</p>
+                  
               </div>
               <div class="col-md-6 border-left">
-                  <p class="info-profil mb-4" v-if="detailUtilisateur.fonction"><span>Profession :
-                      </span>{{ detailUtilisateur.fonction}}
+                  <p class="info-profil mb-4"><span><v-text-field
+                      label="Adresse Email"
+                      outlined dense
+                      v-model="model.email"
+                      
+                    ></v-text-field>
+                    </span><v-btn
+                      :loading="loading"
+                      class="mr-4 text-white" color="#1B73E8"
+                      @click="submitForm"
+                      depressed
+                    >
+                      Mettre à jours l'Email
+                    </v-btn>
                   </p>
-                  <p class="info-profil mb-4" v-if="detailUtilisateur.structures && detailUtilisateur.structures.length"><span>Structure: </span>{{ detailUtilisateur.structures[0] && detailUtilisateur.structures[0].nom_structure}}</p>  
+              
               </div>
           </div>
         </v-col>
@@ -49,20 +51,50 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
   export default {
+
     mounted: function() {
-      //this.getDetail(this.id)
+      this.loggedInUser = this.$getUser() 
+      this.idUser = localStorage.getItem('gecIdUser') 
+      this.model.email = this.$getUser()?.email
     },
     computed: mapGetters({
       detailUtilisateur: 'utilisateurs/detailutilisateur'
     }),
     data () {
       return {
-        id : this.$nuxt._route.params.id,
+        loggedInUser:null,
+        idUser:null,
+        loading:false,
+        valid:false,
+        model:{
+          email:''
+        },
+        rules:{
+
+        emailRules: [
+          v => !!v || 'L\'adresse e-mail est obligatoire',
+          v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
+        ]
+      },
       }
     },
     methods: {
-      submitForm(){
-        alert('Formulaire soumis')
+      submitForm () {
+        //let validation = this.$refs.form.validate()
+        console.log('Données formulaire +++++',{email:this.model.email})
+
+       this.$gecFileApi.put('/users',{email:this.model.email})
+          .then((res) => {           
+            console.log('Données reçues ++++++: ',res)
+            this.$store.dispatch('toast/getMessage',{type:'success',text:"Email mis à jours avec succès !"})
+          })
+          .catch((error) => {
+              console.log('Code error ++++++: ', error)
+              this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
+          }).finally(() => {
+            this.loading = false;
+            console.log('Requête envoyée ')
+        }); 
       },
       retour(){       
           this.$router.push('/utilisateurs');
