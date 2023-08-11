@@ -83,7 +83,7 @@ import { mapMutations, mapGetters } from 'vuex'
         //let validation = this.$refs.form.validate()
         console.log('Données formulaire +++++',{email:this.model.email})
 
-       this.$gecFileApi.put('/users',{email:this.model.email})
+        this.$gecApi.put('/courriers/'+localStorage.getItem('gecIdUser') +'/updatecontacts',{email:this.model.email})
           .then((res) => {           
             console.log('Données reçues ++++++: ',res)
             this.$store.dispatch('toast/getMessage',{type:'success',text:"Email mis à jours avec succès !"})
