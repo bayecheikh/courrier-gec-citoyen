@@ -199,18 +199,18 @@ import { mapMutations, mapGetters } from 'vuex'
           let idStructure = this.detailCourrier.structure._id
           this.$gecApi.$get('/attachments/'+id+'/'+idStructure)
         .then(async (response) => {
-            console.log('Detail document ++++++++++',response.data.data)
+            //console.log('Detail document ++++++++++',response.data.data)
             this.document_link = response.data.data
             this.pieces_jointes_reponses.push(this.document_link)
             this.dialog=true
             
         }).catch((error) => {
-            console.log('Code error ++++++: ', error?.response?.data?.message)
+            //console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
             this.progress=false
         });
-        //console.log('total items++++++++++',this.paginationstructure)
+        ////console.log('total items++++++++++',this.paginationstructure)
       },
       openDocument(file){
         this.progress=true
@@ -223,40 +223,40 @@ import { mapMutations, mapGetters } from 'vuex'
         this.document_link = document
         this.dialog=true
         this.progress=false
-      console.log('document ++++++++++++',document)
-      //console.log('total items++++++++++',this.paginationstructure)
+      //console.log('document ++++++++++++',document)
+      ////console.log('total items++++++++++',this.paginationstructure)
     },
     openCourrier(id){
       this.progress=true
           let idStructure = this.detailCourrier.structure._id
           this.$gecApi.$get('/courriers/courrier-content/'+id+'/'+idStructure)
         .then(async (response) => {
-            console.log('Detail document ++++++++++',response.data)
+            //console.log('Detail document ++++++++++',response.data)
             this.document_link = response.data
             //this.pieces_jointes_reponses.push(this.document_link)
             this.dialog=true
             
         }).catch((error) => {
-            console.log('Code error ++++++: ', error?.response?.data?.message)
+            //console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
             this.progress=false
         });
-      //console.log('total items++++++++++',this.paginationstructure)
+      ////console.log('total items++++++++++',this.paginationstructure)
     },
       /* getDetail(id){
           this.progress=true
           this.$gecApi.$get('/users/'+id)
         .then(async (response) => {
-            console.log('Detail ++++++++++',response)
+            //console.log('Detail ++++++++++',response)
             this.$store.dispatch('Courriers/getDetail',response.data)
         }).catch((error) => {
              this.$toast.error(error?.response?.data?.message).goAway(3000)
-            console.log('Code error ++++++: ', error?.response?.data?.message)
+            //console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
-        //console.log('total items++++++++++',this.paginationstructure)
+        ////console.log('total items++++++++++',this.paginationstructure)
       }, */
       downloadBase64File(contentType, base64Data, fileName) {
           const linkSource = `data:${contentType};base64,${base64Data}`;

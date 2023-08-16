@@ -341,7 +341,7 @@ import { mapMutations, mapGetters } from 'vuex'
       submitForm () {
         let validation = this.$refs.form.validate()
         this.loading = true;
-        console.log('donnee envoyées++++++++++++++',this.model.dataSearch)
+        //console.log('donnee envoyées++++++++++++++',this.model.dataSearch)
         this.$store.commit('utilisateurs/initdatasearch',this.model.dataSearch)
         validation && this.getResult(1,this.model.dataSearch)
       },
@@ -365,19 +365,19 @@ import { mapMutations, mapGetters } from 'vuex'
         }).catch((error) => {
             /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
              this.$toast.error(error?.response?.data?.message).goAway(3000)
-            console.log('Code error ++++++: ', error?.response?.data?.message)
+            //console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
             this.progress=false
         });
-        console.log('total items++++++++++',this.paginationUtilisateur)
+        //console.log('total items++++++++++',this.paginationUtilisateur)
       },
       getResult(page,param){
         this.page=1
          this.progress=true
          this.$gecApi.get('/user-multiple-search/'+param+'?page='+page)
           .then(async (response) => {
-            console.log('Données reçues++++++++++++',response.data.data.data)
+            //console.log('Données reçues++++++++++++',response.data.data.data)
             await this.$store.dispatch('utilisateurs/getList',response.data.data.data)
             let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)
             this.$store.dispatch('utilisateurs/getTotalPage',totalPages)
@@ -386,9 +386,9 @@ import { mapMutations, mapGetters } from 'vuex'
         }).catch((error) => {
              /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
             this.$toast.error(error?.response?.data?.message).goAway(3000)
-            console.log('Code error ++++++: ', error?.response?.data?.message)
+            //console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requête envoyée')
+            //console.log('Requête envoyée')
              this.progress=false;
              this.loading = false;
         });

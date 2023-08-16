@@ -161,7 +161,7 @@
         methods: {
       
           async changeCategorie(value) {
-        console.log("id categorie : ++++++++++++ ",value)
+        //console.log("id categorie : ++++++++++++ ",value)
         // this.model.categorie = value.libelle
         this.model.categorie = value.id
 
@@ -170,7 +170,7 @@
       },
           submitForm () {
        
-        console.log('Données formulaire contenus Catégorie ++++++ : ',{...this.model})
+        //console.log('Données formulaire contenus Catégorie ++++++ : ',{...this.model})
             let validation = this.$refs.form.validate()
           
             this.loading = true;
@@ -181,11 +181,11 @@
                 this.$router.push('/contenusdynamiques');
               })
               .catch((error) => {
-                  console.log('Code error ++++++: ', error)
+                  //console.log('Code error ++++++: ', error)
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la création '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requête envoyée ')
+                //console.log('Requête envoyée ')
             });
           },
           resetForm () {

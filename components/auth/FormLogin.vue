@@ -98,15 +98,15 @@ import layoutadmin from '@/static/data/layoutadmin'
         let validation = this.$refs.form.validate()
         
           this.loading = true;
-          console.log('Données formulaire ++++++++++++++++++++++++++',{
-              email: this.model.email,
-              password: this.model.password
-            })
+          // console.log('Données formulaire ++++++++++++++++++++++++++',{
+          //     email: this.model.email,
+          //     password: this.model.password
+          //   })
           validation && await this.$gecApi.post('users/login', {
               email: this.model.email,
               password: this.model.password
           }).then(async (response) => { 
-            console.log('Utilisateur conjnecté++++++++++++++++++++++++++',response.data)
+            //console.log('Utilisateur conjnecté++++++++++++++++++++++++++',response.data)
 
            localStorage.setItem('gecAdminToken', response.data.token)
             localStorage.setItem('gecAdminLoggedInUser', JSON.stringify(response.data.data.user))
@@ -116,11 +116,11 @@ import layoutadmin from '@/static/data/layoutadmin'
 
           }).
           catch((error) => {
-              console.log('Code error ++++++: ', error.response)
+              //console.log('Code error ++++++: ', error.response)
               this.$store.dispatch('toast/getMessage',{type:'error',text:error.response.data.message || 'Echec de la connexion'})
           }).finally(() => {
             this.loading = false;
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
           }); 
       }
     }

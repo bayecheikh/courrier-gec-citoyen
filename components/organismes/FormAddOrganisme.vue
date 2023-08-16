@@ -207,7 +207,7 @@
         }),
         methods: {
           async changeCategorie(value) {
-        console.log("VALUEE : ++++++++++++ ",value)
+        //console.log("VALUEE : ++++++++++++ ",value)
         this.model.typeStructure = value.id
        
 
@@ -226,11 +226,11 @@
                 this.$router.push('/organismes');
               })
               .catch((error) => {
-                  console.log('Code error ++++++: ', error)
+                  //console.log('Code error ++++++: ', error)
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requête envoyée ')
+                //console.log('Requête envoyée ')
             });
           },
           resetForm () {
@@ -246,7 +246,7 @@
           this.showFournisseur=true
           else
           this.showFournisseur=false
-          console.log('************',checkRole)
+          //console.log('************',checkRole)
           },
           },
         metaInfo () {

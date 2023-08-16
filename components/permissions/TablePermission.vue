@@ -141,10 +141,10 @@ import { mapMutations, mapGetters } from 'vuex'
             this.$store.dispatch('toast/getMessage',{type:'success',text:response.data.message || 'Suppression réussie'})
             }).catch((error) => {
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la suppression'})
-              console.log('Code error ++++++: ', error)
+              //console.log('Code error ++++++: ', error)
             }).finally(() => {
               
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
         /* alert('Supprimer '+item.id) */
       },

@@ -106,11 +106,11 @@
                 this.$router.push('/categoriescontenusdynamiques');
               })
               .catch((error) => {
-                  console.log('Code error ++++++: ', error)
+                  //console.log('Code error ++++++: ', error)
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requête envoyée ')
+                //console.log('Requête envoyée ')
             });
           },
           resetForm () {

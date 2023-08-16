@@ -3,7 +3,7 @@
   <v-card-title class="d-flex pl-0 pr-0">
     <v-row>
         <v-col md="4" lg="4" sm="12">
-          <h3>En traitement</h3>
+          <h3>En cours de traitement</h3>
         </v-col>
         <v-col md="4" lg="4" sm="12">
           <v-text-field
@@ -106,15 +106,15 @@ import { mapMutations, mapGetters } from 'vuex'
         this.$store.dispatch('toast/getMessage',{type:'processing',text:'Traitement en cours ...'}) 
         this.$gecApi.$delete('/structures/'+this.activeItem.id)
         .then(async (response) => { 
-            console.log('Réponse delete ++++++: ', response)
+            //console.log('Réponse delete ++++++: ', response)
             this.$store.dispatch('courriers/deletecourrier',this.activeItem.id)
             this.$store.dispatch('toast/getMessage',{type:'success',text:response.data?.data?.message || 'Suppression réussie'})
             }).catch((error) => {
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Échec de la suppression'})
-              console.log('Code error ++++++: ', error)
+              //console.log('Code error ++++++: ', error)
             }).finally(() => {
               
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
         /* alert('Supprimer '+item.id) */
       },

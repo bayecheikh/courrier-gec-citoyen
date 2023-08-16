@@ -162,7 +162,7 @@
         }),
         methods: {
           async changeCategorie(value) {
-        console.log("id categorie : ++++++++++++ ",value)
+        //console.log("id categorie : ++++++++++++ ",value)
         // this.model.categorie = value.libelle
         this.model.categorie = value.id
 
@@ -173,7 +173,7 @@
             this.progress=true
             await this.$gecApi.$get('/contenus/'+id)
           .then(async (response) => {
-              console.log('Detail ++++++++++',response)
+              //console.log('Detail ++++++++++',response)
               this.$store.dispatch('contenusdynamiques/getDetail',response.data.data)
               this.model.id = response.data.data.id
               this.model.body= response.data.data.body
@@ -186,10 +186,10 @@
 
           }).catch((error) => {
                this.$toast.error(error?.response?.data?.message).goAway(3000)
-              console.log('Code error ++++++: ', error?.response?.data?.message)
+              //console.log('Code error ++++++: ', error?.response?.data?.message)
           }).finally(() => {
-              console.log('Requête envoyée ')
-              console.log("QUESTION", this.model.question)
+              //console.log('Requête envoyée ')
+              //console.log("QUESTION", this.model.question)
           });
         },
         
@@ -204,11 +204,11 @@
                 this.$router.push('/contenusdynamiques');
               })
               .catch((error) => {
-                  console.log('Code error ++++++: ', error)
+                  //console.log('Code error ++++++: ', error)
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la modification '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requête envoyée ')
+                //console.log('Requête envoyée ')
             });
           },
           resetForm () {
@@ -224,7 +224,7 @@
           this.showFournisseur=true
           else
           this.showFournisseur=false
-          console.log('************',checkRole)
+          //console.log('************',checkRole)
           },
           },
         metaInfo () {

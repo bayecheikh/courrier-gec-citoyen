@@ -160,7 +160,7 @@
                 async submitValidation(){
                   
                     this.load=true
-                    console.log('Données formulaire ++++++: ', {...this.detailutilisateur,...this.detailministere,...this.detailcontenu})
+                    //console.log('Données formulaire ++++++: ', {...this.detailutilisateur,...this.detailministere,...this.detailcontenu})
                     this.$gecApi.$post('/courriers',{...this.detailutilisateur,...this.detailministere,...this.detailcontenu})
                     .then(async (response) => {
                      await this.$store.dispatch("courrierenvoye/getDetail", true);
@@ -168,9 +168,9 @@
                         
     
                     }).catch((error) => {
-                        console.log('Code error ++++++: ', error?.response?.data?.message)
+                        //console.log('Code error ++++++: ', error?.response?.data?.message)
                     }).finally(() => {
-                        console.log('Requette envoyé ')
+                        //console.log('Requette envoyé ')
                     });
                     
     

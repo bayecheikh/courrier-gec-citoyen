@@ -170,13 +170,13 @@ import { mapMutations, mapGetters } from 'vuex'
         methods: {
             submitContenu(){
                 this.load=true
-                console.log('Données formulaire ++++++: ', {...this.model})
+                //console.log('Données formulaire ++++++: ', {...this.model})
                 this.$store.dispatch('contenus/getDetail',{...this.model,entree:this.selectedEntree,subject:this.model.subject})
                 this.$store.dispatch('active_step/getDetail',{id:'validation'})
 
             },
             changeModel($event){
-                console.log('Données formulaire ++++++: ', $event.target.value)
+                //console.log('Données formulaire ++++++: ', $event.target.value)
                 let model = this.modelContenu?.filter(item => (item._id==$event.target.value))[0];
                 this.$refs.message.value=model?.message || ""
                 this.model.message = model?.message || ""
@@ -187,13 +187,13 @@ import { mapMutations, mapGetters } from 'vuex'
                 this.model.modelId = parseInt($event.target.value)
             },
             changeModelEntree($event){
-                console.log('Données formulaire ++++++: ', $event.target.value)
+                //console.log('Données formulaire ++++++: ', $event.target.value)
                 /* this.model.message = $event.target.value.text
                 this.model.subject = $event.target.value.libelle */
                 this.model.entree = $event.target.value
             },
             changeType($event){
-                console.log('Données formulaire ++++++: ', $event.target.value)
+                //console.log('Données formulaire ++++++: ', $event.target.value)
                 /* this.model.message = $event.target.value.text
                 this.model.subject = $event.target.value.libelle */
                 if($event.target.value=='saisie_libre'){
@@ -229,7 +229,7 @@ import { mapMutations, mapGetters } from 'vuex'
                 let extFile = filename.substr(idxDot, filename.length).toLowerCase(); 
                 this.model.format = extFile
                 let size = files[0].size/1024/1024 //La taille en Mbit
-                console.log('Size -------------- ',size)
+                //console.log('Size -------------- ',size)
 
                 //if (size <= 5 && (extFile=="jpg" || extFile=="jpeg" || extFile=="png"|| extFile=="pdf" || extFile=="doc" || extFile=="xls")){
                 if (size <= 5 && ( extFile=="pdf" )){
@@ -245,7 +245,7 @@ import { mapMutations, mapGetters } from 'vuex'
                         this.$store.dispatch('contenus/getDetail',{...this.detailcontenu,encodedFile:reader.result.split(';base64,')[1],format:extFile})
                         //this.model.piece_jointes.push({title:title,format:extFile,encodedFile:reader.result.split(';base64,')[1]})
                         //this.model.piece_jointes.push({title:title,format:extFile,encodedFile:reader.result.split(';base64,')[1]})
-                        console.log(reader.result.split(';base64,')[1])
+                        //console.log(reader.result.split(';base64,')[1])
                     }
                     reader.readAsDataURL(files[0])
                     this.$emit('input', files[0])
@@ -255,7 +255,7 @@ import { mapMutations, mapGetters } from 'vuex'
                 }  
             },
             handleFileUpload2(e){  
-                console.log(this.model.pieces_jointes.length)   
+                //console.log(this.model.pieces_jointes.length)   
                 if(this.model.pieces_jointes.length<=2){
                     //Recupère le fichier
                     const input = this.$refs.file2
@@ -269,7 +269,7 @@ import { mapMutations, mapGetters } from 'vuex'
                     let extFile = filename.substr(idxDot, filename.length).toLowerCase(); 
                     // this.model.format = extFile
                     let size = files[0].size/1024/1024 //La taille en Mbit
-                    console.log('Size -------------- ',size)
+                    //console.log('Size -------------- ',size)
 
                     //if (size <= 5 && (extFile=="jpg" || extFile=="jpeg" || extFile=="png"|| extFile=="pdf" || extFile=="doc" || extFile=="xls")){
                     if (size <= 5 && ( extFile=="pdf" )){
@@ -285,7 +285,7 @@ import { mapMutations, mapGetters } from 'vuex'
                             //this.$store.dispatch('contenus/getDetail',{...this.detailcontenu,encodedFile:reader.result.split(';base64,')[1],format:extFile})
                             this.model.pieces_jointes.push({title:title,format:extFile,encodedFile:reader.result.split(';base64,')[1],taille:size})
                             //this.model.piece_jointes.push({title:title,format:extFile,encodedFile:reader.result.split(';base64,')[1]})
-                            console.log(this.model.pieces_jointes)
+                            //console.log(this.model.pieces_jointes)
                         }
                         reader.readAsDataURL(files[0])
                         this.$emit('input', files[0])
@@ -300,7 +300,7 @@ import { mapMutations, mapGetters } from 'vuex'
                  
             },
             deleteFindFichier: function(index) {
-                console.log('Index---- ',index);
+                //console.log('Index---- ',index);
                 this.model.pieces_jointes.splice(index,1);
 
             },

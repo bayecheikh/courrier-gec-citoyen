@@ -81,23 +81,23 @@ import layoutadmin from '@/static/data/layoutadmin'
         let validation = this.$refs.form.validate()
         this.loading = true;
         this.color="success"
-        console.log('Données formulaire ++++++ : ',{...this.model})
+        //console.log('Données formulaire ++++++ : ',{...this.model})
         
         validation && this.$axios.post('/forget_password',{...this.model})
           .then((res) => {    
             this.$toast.success(res.data.message || 'Vérifiez votre boite de récéption').goAway(4000)
-            console.log('Données reçues ++++++: ',res.data)
+            //console.log('Données reçues ++++++: ',res.data)
              setTimeout(() => {
               this.$router.push('/login');
             }, 1000);
           })
           .catch((error) => {
-              console.log('Code error ++++++: ', error.response.data.message)
+              //console.log('Code error ++++++: ', error.response.data.message)
               this.$toast.error('Erreur').goAway(4000)
           }).finally(() => {
             this.loading = false;
             this.dialog = false
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         }); 
       }
     }

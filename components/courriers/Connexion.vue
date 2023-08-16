@@ -47,7 +47,7 @@ import { mapMutations, mapGetters } from 'vuex'
         methods: {
             submitConnexion(){
                 this.load=true
-                console.log('Données formulaire ++++++: ', {...this.model})
+                //console.log('Données formulaire ++++++: ', {...this.model})
                 let dataUser = {
                     numero_ipn:"",
                     type_utilisateur:"Citoyen",

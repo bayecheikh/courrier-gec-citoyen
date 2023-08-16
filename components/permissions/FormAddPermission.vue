@@ -66,7 +66,7 @@ import Notification from '@/components/Notification'
       submitForm () {
         this.loading = true;
         let validation = this.$refs.form.validate()
-        console.log('Données formulaire ++++++ : ',{...this.model})
+        //console.log('Données formulaire ++++++ : ',{...this.model})
         
         validation && this.$gecApi.post('/permissions', {...this.model})
           .then((res) => {    
@@ -75,11 +75,11 @@ import Notification from '@/components/Notification'
             
           })
           .catch((error) => {
-               console.log('Code error ++++++: ', error)
+               //console.log('Code error ++++++: ', error)
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
           }).finally(() => {
             this.loading = false;
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
       },
       resetForm () {

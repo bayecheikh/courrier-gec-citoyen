@@ -26,7 +26,7 @@ export default {
     TableCourrier,
   },
   /* middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
-    console.log('token: ++++++++++ ',$getToken())
+    //console.log('token: ++++++++++ ',$getToken())
     if ($getToken()==null || $getUser()==null || $isLogged()==null || $isLogged()==false) {
       $loggout()
       return redirect('https://siteweb-gec-citoyen.vercel.app/')
@@ -63,13 +63,13 @@ export default {
     /* getCourriers() {
       this.$gecApi.$get('/structures')
       .then(async (response) => { 
-        console.log('Données reçues contenu+++++++++++',response)
+        //console.log('Données reçues contenu+++++++++++',response)
         await commit('initlist', response.data.data)
       }).catch((error) => {
-        console.log("ERROR GEC", error)
+        //console.log("ERROR GEC", error)
           this.$toast.error(error).goAway(3000)
       }).finally(() => {
-        console.log('Requête envoyée ')
+        //console.log('Requête envoyée ')
   
       });
     } */

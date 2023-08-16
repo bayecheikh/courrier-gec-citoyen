@@ -315,22 +315,22 @@ import { mapMutations, mapGetters } from 'vuex'
         methods: {
             submitCoordonnee(){
                 this.load=true
-                console.log('Données formulaire ++++++: ', {...this.model})
+                //console.log('Données formulaire ++++++: ', {...this.model})
                 this.$store.dispatch('coordonnees/getDetail',{...this.model})
                 this.$store.dispatch('active_step/getDetail',{id:'contenu'})
                 /* this.$axios.$post('/demandes')
                 .then(async (response) => {
                     //this.$toast.success(response.message).goAway(2000)
-                    console.log('Données demande Reçu ++++++: ', response)
+                    //console.log('Données demande Reçu ++++++: ', response)
 
                 }).catch((error) => {
-                    console.log('Code error ++++++: ', error?.response?.data?.message)
+                    //console.log('Code error ++++++: ', error?.response?.data?.message)
                 }).finally(() => {
-                    console.log('Requette envoyé ')
+                    //console.log('Requette envoyé ')
                 }); */
             },
             changeTypeUser($event){
-                console.log('Données formulaire ++++++: ', $event.target.value)
+                //console.log('Données formulaire ++++++: ', $event.target.value)
                 /* this.model.requerant.message = $event.target.value.text
                 this.model.requerant.subject = $event.target.value.libelle */
                 if($event.target.value=='Requerant'){

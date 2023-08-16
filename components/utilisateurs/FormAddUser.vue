@@ -280,7 +280,7 @@ import { mapMutations, mapGetters } from 'vuex'
         let idxDot = files[0].name.lastIndexOf(".") + 1;
         let extFile = files[0].name.substr(idxDot, files[0].name.length).toLowerCase(); 
         let size = files[0].size/1024/1024 //La taille en Mbit
-        console.log('Size-------------- ',size)
+        //console.log('Size-------------- ',size)
 
         if (size <= 2 && (extFile=="jpg" || extFile=="jpeg" || extFile=="png")){
           //Affecté le fichier image au model avatar
@@ -304,7 +304,7 @@ import { mapMutations, mapGetters } from 'vuex'
         let selectedRoles = this.model.roles && this.model.roles.map((item)=>{return item.id})
         this.model.roles=selectedRoles
         this.loading = true;
-        console.log('Données formulaire++++++: ',{...this.model,roles:selectedRoles})
+        //console.log('Données formulaire++++++: ',{...this.model,roles:selectedRoles})
 
 
         /* let formData = new FormData();
@@ -326,23 +326,23 @@ import { mapMutations, mapGetters } from 'vuex'
         formData.append("fonction",this.model.fonction),
         formData.append("structure_id",this.model.structure_id)
 
-        console.log('Données formulaire files ++++++: ',formData) */
+        //console.log('Données formulaire files ++++++: ',formData) */
 
+        ////console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
         //console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
-        console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
 
        validation && this.$gecFileApi.post('/users',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
           .then((res) => {           
-            console.log('Données reçues ++++++: ',res.data)
+            //console.log('Données reçues ++++++: ',res.data)
             this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message})
             this.$router.push('/utilisateurs');
           })
           .catch((error) => {
-              console.log('Code error ++++++: ', error)
+              //console.log('Code error ++++++: ', error)
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
           }).finally(() => {
             this.loading = false;
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
       },
       resetForm () {
@@ -358,7 +358,7 @@ import { mapMutations, mapGetters } from 'vuex'
         this.showFournisseur=true
         else
         this.showFournisseur=false
-        console.log('************',checkRole)
+        //console.log('************',checkRole)
       },
     },
     metaInfo () {

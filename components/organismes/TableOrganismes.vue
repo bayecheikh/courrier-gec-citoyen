@@ -166,15 +166,15 @@ import { mapMutations, mapGetters } from 'vuex'
         this.$store.dispatch('toast/getMessage',{type:'processing',text:'Traitement en cours ...'}) 
         this.$gecApi.$delete('/structures/'+this.activeItem.id)
         .then(async (response) => { 
-            console.log('Réponse delete ++++++: ', response)
+            //console.log('Réponse delete ++++++: ', response)
             this.$store.dispatch('organismes/deleteorganisme',this.activeItem.id)
             this.$store.dispatch('toast/getMessage',{type:'success',text:response.data?.data?.message || 'Suppression réussie'})
             }).catch((error) => {
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Échec de la suppression'})
-              console.log('Code error ++++++: ', error)
+              //console.log('Code error ++++++: ', error)
             }).finally(() => {
               
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
         /* alert('Supprimer '+item.id) */
       },

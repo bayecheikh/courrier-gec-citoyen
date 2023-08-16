@@ -27,7 +27,7 @@
         },
           methods:{
             getToken(){
-                console.log("aaaa", localStorage.getItem('gecToken'))
+                //console.log("aaaa", localStorage.getItem('gecToken'))
             
             }
         }

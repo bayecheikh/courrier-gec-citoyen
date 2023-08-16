@@ -108,7 +108,7 @@ export default {
         },
         submitMinistere(item){
             this.load=true
-            console.log('Ministère ++++++: ', item)
+            //console.log('Ministère ++++++: ', item)
             this.$store.dispatch('ministeres/getDetail',{title_organisme:item.description,structure:item.id})
             this.$store.dispatch('active_step/getDetail',{id:'coordonnees'})
         }

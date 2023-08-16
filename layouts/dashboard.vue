@@ -172,7 +172,7 @@
             this.$loggout()
         } catch (e) {
          // this.$store.dispatch('toast/getMessage',{type:'error',text:e})
-          console.log(e)
+          //console.log(e)
           this.loading = false;
         }
         window.location.href = "https://siteweb-gec-citoyen.vercel.app/?logout=true"

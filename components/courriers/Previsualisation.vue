@@ -96,7 +96,7 @@
        },
        methods: {
          async beforeDownload ({ html2pdf, options, pdfContent }) {
-            //console.log("PDF content +++++++ ",pdfContent)
+            ////console.log("PDF content +++++++ ",pdfContent)
             /* await html2pdf().set(options).from(pdfContent).toPdf().get('pdf').then((pdf) => {
                 const totalPages = pdf.internal.getNumberOfPages()
                 for (let i = 1; i <= totalPages; i++) {
@@ -110,7 +110,7 @@
         async hasDownloaded (e) {
             this.blobToBase64(e)
             .then(base64String => {
-               //console.log("PDF content +++++++ ",base64String)
+               ////console.log("PDF content +++++++ ",base64String)
                this.$store.dispatch('contenus/getDetail',{...this.detailcontenu,encodedFile:base64String.split(';base64,')[1],format:'pdf'})
             });
         },
@@ -128,13 +128,13 @@
 
             // Encode the String
             Buffer.from(string).toString('base64')
-            console.log('base 64', Buffer.from('Hello World!').toString('base64'))
+            //console.log('base 64', Buffer.from('Hello World!').toString('base64'))
          },
          onProgress (x) {
-           console.log(x)
+           //console.log(x)
          },
          hasGenerated (x) {
-           console.log(x)
+           //console.log(x)
          }
        }
      }

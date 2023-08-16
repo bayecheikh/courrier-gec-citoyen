@@ -11,14 +11,14 @@ import { mapGetters } from 'vuex'
 export default {
     // middleware({ redirect, $getToken, $getUser, $isLogged, $loggout }) {
     //     if (process.server) {
-    //         console.log('on server');
+    //         //console.log('on server');
     //         return
     //     }
     //     if (process.client) {
-    //         console.log("im on client midddlllllll");
+    //         //console.log("im on client midddlllllll");
     //         // return localStorage.getItem('gecToken')
-    //         // console.log('token: ++++++++++ ', $getToken())
-    //         console.log("AAAAAAA", localStorage.getItem('gecToken'))
+    //         // //console.log('token: ++++++++++ ', $getToken())
+    //         //console.log("AAAAAAA", localStorage.getItem('gecToken'))
     //         if (this.$getToken()==null || this.$getUser()==null || this.$isLogged()==null || this.$isLogged()==false )    {
     //             this.$loggout()
     
@@ -34,16 +34,16 @@ export default {
     mounted: function() {
         this.getToken()
         // if (process.server) {
-        //     console.log('on server');
+        //     //console.log('on server');
         //     return
         // }
         // if (process.client) {
-            //console.log("im on client 44444444444");
+            ////console.log("im on client 44444444444");
             // return localStorage.getItem('gecToken')
-            console.log('token: ++++++++++ ', this.$getToken())
+            //console.log('token: ++++++++++ ', this.$getToken())
              this.getToken()
             if (this.$getToken()==null || this.$getUser()==null || this.$isLogged()==null || this.$isLogged()==false )    {
-                console.log("Non connecté");
+                //console.log("Non connecté");
                 this.$loggout()
     
     
@@ -59,7 +59,7 @@ export default {
     },
     methods:{
         getToken(){
-            console.log("aaaa", localStorage.getItem('gecToken'))
+            //console.log("aaaa", localStorage.getItem('gecToken'))
          
         }
     }

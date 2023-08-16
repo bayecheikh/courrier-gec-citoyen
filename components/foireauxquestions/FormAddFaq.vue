@@ -189,7 +189,7 @@
         methods: {
       
             async changeCategorie(value) {
-        console.log("VALUEE : ++++++++++++ ",value)
+        //console.log("VALUEE : ++++++++++++ ",value)
         this.model.categorie = value.id
        
 
@@ -198,7 +198,7 @@
       },
           submitForm () {
        
-        console.log('Données formulaire FAQ Catégorie ++++++ : ',{...this.model})
+        //console.log('Données formulaire FAQ Catégorie ++++++ : ',{...this.model})
             let validation = this.$refs.form.validate()
           
             this.loading = true;
@@ -209,11 +209,11 @@
                 this.$router.push('/foireauxquestions');
               })
               .catch((error) => {
-                  console.log('Code error ++++++: ', error)
+                  //console.log('Code error ++++++: ', error)
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la création '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requête envoyée ')
+                //console.log('Requête envoyée ')
             });
           },
           resetForm () {

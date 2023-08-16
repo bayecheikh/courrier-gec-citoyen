@@ -66,15 +66,15 @@ import { mapMutations, mapGetters } from 'vuex'
           this.progress=true
           this.$gecApi.$get('/users/'+id)
         .then(async (response) => {
-            console.log('Detail ++++++++++',response)
+            //console.log('Detail ++++++++++',response)
             this.$store.dispatch('utilisateurs/getDetail',response.data)
         }).catch((error) => {
              this.$toast.error(error?.response?.data?.message).goAway(3000)
-            console.log('Code error ++++++: ', error?.response?.data?.message)
+            //console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requête envoyée ')
+            //console.log('Requête envoyée ')
         });
-        //console.log('total items++++++++++',this.paginationstructure)
+        ////console.log('total items++++++++++',this.paginationstructure)
       },
     },
   }
