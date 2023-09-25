@@ -7,7 +7,7 @@
             <v-icon color="#0a3764">mdi-email-outline</v-icon>
           </div>
           
-          <h4 class="text-primary">Total Courriers envoyés</h4>
+          <h4 class="text-primary">Total courriers envoyés</h4>
           
         </div>
         
@@ -18,7 +18,7 @@
         </h1>
        
         <NuxtLink class="text-detail" to="/courrierenvoyes">
-          Voir detail
+          Voir détail
         </NuxtLink>
       </div>
     </v-col>
@@ -40,7 +40,7 @@
         </h1>
         
         <NuxtLink class="text-detail" to="/courrierrecus">
-          Voir detail
+          Voir détail
         </NuxtLink>
       </div>
     </v-col>
@@ -61,7 +61,7 @@
             ).toLocaleString() }}
         </h1>
         <NuxtLink class="text-detail" to="/courrierentraitements">
-          Voir detail
+          Voir détail
         </NuxtLink>
       </div>
     </v-col>

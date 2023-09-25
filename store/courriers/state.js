@@ -11,7 +11,7 @@ export default () => ({
         { text: 'Structure', value: 'structure.description' },
         { text: 'Objet', value: 'subject' },
         { text: 'Date d\'envoi', value: 'documentDate' },
-        { text: 'Date de reponse', value: 'responses[0].send_date' },
+        { text: 'Date de réponse', value: 'responses[0].send_date' },
         { text: 'Responses', value: 'responses', align: ' d-none' },
         { text: 'Statut', value: 'traitement_status_slug' },
         { text: 'Actions', value: 'actions', sortable: false }

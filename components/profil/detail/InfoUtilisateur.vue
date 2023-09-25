@@ -36,7 +36,7 @@
                       @click="submitForm"
                       depressed
                     >
-                      Mettre à jours l'Email
+                      Mettre à jour l'Email
                     </v-btn>
                   </p>
               
@@ -86,7 +86,7 @@ import { mapMutations, mapGetters } from 'vuex'
         this.$gecApi.put('/courriers/'+localStorage.getItem('gecIdUser') +'/updatecontacts',{email:this.model.email})
           .then((res) => {           
             console.log('Données reçues ++++++: ',res)
-            this.$store.dispatch('toast/getMessage',{type:'success',text:"Email mis à jours avec succès !"})
+            this.$store.dispatch('toast/getMessage',{type:'success',text:"Email mis à jour avec succès !"})
           })
           .catch((error) => {
               console.log('Code error ++++++: ', error)

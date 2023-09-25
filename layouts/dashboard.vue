@@ -45,7 +45,7 @@
     <v-app-bar elevation="0" app color="#fff">
       <!-- <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-2"></v-app-bar-nav-icon> -->
 
-      <v-toolbar-title class="custom-top-title pl-5">PLATEFORME <span class="color-green">GESTION ELECTRONIQUE DE COURRIERS</span> DU BENIN</v-toolbar-title>
+      <v-toolbar-title class="custom-top-title pl-5">PLATEFORME <span class="color-green">GESTION ELECTRONIQUE DE COURRIER</span> DU BENIN</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="mr-2"><h5>{{loggedInUser && loggedInUser.name}}</h5> </div>
       <v-avatar size="30px">
